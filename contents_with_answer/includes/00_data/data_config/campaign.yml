@@ -1,0 +1,86 @@
+- var: snowfakery_locale
+  value: ja_JP
+- var: count
+  value: 30
+
+# - include_file: user.yml
+
+- object: Campaign
+  count: ${{count}}
+  fields:
+    IsDeleted: False
+    Name: 
+      random_choice:
+        法人向けノートパソコン販売促進キャンペーン: 4%
+        タブレット法人向けプロモーションイベント: 4%
+        スマホ法人営業推進: 4%
+        法人PCアップグレードプログラム: 4%
+        新タブレット法人向け発売: 4%
+        法人向け新学期ノートパソコンセール: 4%
+        夏の法人スマホエクストラバガンザ: 4%
+        法人向けタブレットソリューション: 4%
+        法人ノートパソコン割引デー: 4%
+        法人スマホクリアランスセール: 4%
+        法人向けタブレット下取りイベント: 4%
+        ホリデー法人PCスペシャル: 4%
+        法人ビジネス用ノートパソコンオファー: 4%
+        法人モバイルデバイスマーケティングブリッツ: 4%
+        法人タブレットとPCのバンドル取引: 4%
+        法人スマホ紹介プログラム: 4%
+        法人ノートパソコンロイヤルティリワード: 4%
+        法人タブレット啓発キャンペーン: 4%
+        法人スマホロイヤルティプログラム: 4%
+        法人ノートパソコン体験デー: 4%
+        職場復帰法人タブレットセール: 4%
+        年末法人ノートパソコン割引: 4%
+        夏の法人タブレットオファー: 4%
+        法人向けスマホキャンペーン: 4%
+        学生向け法人ノートパソコンイニシアチブ: 4%
+    ParentId: null
+    Type:
+      random_choice: 
+        - "Webinar"
+        - "Conference"
+        - "Direct Mail"
+        - "Trade Show"
+        - "Online"
+        - "In-Person"
+    Status: 
+      random_choice: 
+        - "In Progress"
+        - "Completed"
+    StartDate: ${{fake.date_between(start_date="-1y", end_date="today")}}
+    EndDate: ${{fake.date_between(start_date="today", end_date="+1y")}}
+    ExpectedResponse: Null
+    IsActive: Null
+    Description: Null
+    NumberOfLeads: Null
+    NumberOfConvertedLeads: Null
+    NumberOfContacts: Null
+    NumberOfResponses: Null
+    NumberOfOpportunities: Null
+    NumberOfWonOpportunities: Null
+    AmountAllOpportunities: Null
+    AmountWonOpportunities: Null
+    ExpectedRevenue: Null
+    BudgetedCost: Null
+    ActualCost: Null
+    NumberSent: Null
+    OwnerId:
+      random_reference: User
+    CreatedDate: ${{fake.date_this_year}}
+    CreatedById: 
+      random_reference: User
+    LastModifiedDate: ${{fake.date_this_year}}
+    LastModifiedById: 
+      random_reference: User
+    SystemModstamp: ${{fake.date_this_year}}
+    LastActivityDate: null
+    LastViewedDate: null
+    LastReferencedDate: null
+    CampaignMemberRecordTypeId: null
+    LastModifiedDate: ${{fake.date_this_year}}
+    LastModifiedById:
+      random_reference: User
+    SystemModstamp: ${{fake.date_this_year}}
+    IsDeleted: False

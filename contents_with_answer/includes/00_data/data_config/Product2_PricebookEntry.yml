@@ -1,0 +1,13 @@
+- snowfakery_version: 3
+- include_file: Product2_PricebookEntry_files/Low-End_ARM_PC.yml
+- include_file: Product2_PricebookEntry_files/Middle-End_ARM_PC.yml
+- include_file: Product2_PricebookEntry_files/High-End_ARM_PC.yml
+- include_file: Product2_PricebookEntry_files/Low-End_x86_PC.yml
+- include_file: Product2_PricebookEntry_files/Middle-End_x86_PC.yml
+- include_file: Product2_PricebookEntry_files/High-End_x86_PC.yml
+- include_file: Product2_PricebookEntry_files/Low-End_ARM_Tablet.yml
+- include_file: Product2_PricebookEntry_files/Middle-End_ARM_Tablet.yml
+- include_file: Product2_PricebookEntry_files/High-End_ARM_Tablet.yml
+- include_file: Product2_PricebookEntry_files/Low-End_ARM_Smartphone.yml
+- include_file: Product2_PricebookEntry_files/Middle-End_ARM_Smartphone.yml
+- include_file: Product2_PricebookEntry_files/High-End_ARM_Smartphone.yml

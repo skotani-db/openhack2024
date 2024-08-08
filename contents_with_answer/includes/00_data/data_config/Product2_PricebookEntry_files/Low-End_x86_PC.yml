@@ -1,0 +1,55 @@
+- value: ja_JP
+  var: snowfakery_locale
+- value: 1
+  var: count
+- value: Low-End x86 PC
+  var: name
+- value: Low-End
+  var: family
+- value: 80000
+  var: unit_price
+- include_file: ../user.yml
+- count: ${{count}}
+  fields:
+    CreatedById:
+      random_reference: User
+    CreatedDate: ${{fake.date_this_year}}
+    Description: ${{name}}
+    DisplayUrl: null
+    ExternalDataSourceId: null
+    ExternalId: null
+    Family: ${{family}}
+    IsActive: true
+    IsArchived: false
+    IsDeleted: false
+    LastModifiedById:
+      random_reference: User
+    LastModifiedDate: ${{fake.date_this_year}}
+    LastReferencedDate: null
+    LastViewedDate: null
+    Name: ${{name}}
+    ProductCode: ${{fake.Bothify(text='PRD-#####')}}
+    QuantityUnitOfMeasure: null
+    StockKeepingUnit: null
+    SystemModstamp: ${{fake.date_this_year}}
+  friends:
+  - fields:
+      CreatedById:
+        random_reference: User
+      CreatedDate: ${{fake.date_this_year}}
+      IsActive: true
+      IsArchived: false
+      IsDeleted: false
+      LastModifiedById:
+        random_reference: User
+      LastModifiedDate: ${{fake.date_this_year}}
+      Name: ${{Product2.Name}}
+      Pricebook2Id: null
+      Product2Id:
+        reference: Product2
+      ProductCode: ${{Product2.ProductCode}}
+      SystemModstamp: ${{fake.date_this_year}}
+      UnitPrice: ${{unit_price}}
+      UseStandardPrice: true
+    object: PricebookEntry
+  object: Product2
