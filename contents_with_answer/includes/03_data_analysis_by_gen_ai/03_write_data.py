@@ -4,6 +4,10 @@
 
 # COMMAND ----------
 
+# MAGIC %run ../../00_config
+
+# COMMAND ----------
+
 dbutils.widgets.text("catalog_name", "")
 catalog_name = dbutils.widgets.get("catalog_name")
 print(f"catalog_name is {catalog_name}")
@@ -20,7 +24,7 @@ subfolder_name = "sample_data_01"
 
 import os
 parent_dir = os.path.dirname(os.getcwd())
-src_dir = f"file:{parent_dir}/00_data/{subfolder_name}"
+src_dir = f"/Volumes/{catalog_name}/{src_schema_name}/{src_volume_name}/{src_folder_name}"
 
 # COMMAND ----------
 

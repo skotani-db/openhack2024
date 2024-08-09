@@ -95,11 +95,7 @@ spark.sql(
 # COMMAND ----------
 
 # 本ノートブックで利用するソースファイルを Volume に移動
-import os
-
-current_dir = os.getcwd()
-file_dir = f"file:{current_dir}/includes/00_data/sample_data_01"
-
+file_dir = f"/Volumes/{catalog_name}/{src_schema_name}/{src_volume_name}/{src_folder_name}"
 volume_dir = f"/Volumes/{catalog_name}/{schema_name}/{volume_name}"
 
 dbutils.fs.cp(file_dir, volume_dir, recurse=True)

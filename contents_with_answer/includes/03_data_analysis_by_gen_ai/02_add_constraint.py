@@ -581,13 +581,13 @@ child_relationships = [
         "parent_table": "user",
     },
     {
-        "childSObject": "PricebookEntry",
+        "childSObject": "pricebook_entry",
         "field": "CreatedById",
         "parent_column": "Id",
         "parent_table": "user",
     },
     {
-        "childSObject": "PricebookEntry",
+        "childSObject": "pricebook_entry",
         "field": "LastModifiedById",
         "parent_column": "Id",
         "parent_table": "user",

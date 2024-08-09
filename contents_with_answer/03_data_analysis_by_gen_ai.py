@@ -48,13 +48,18 @@ for init_n in init_notebooks:
 # COMMAND ----------
 
 # MAGIC %md
+# MAGIC
+
+# COMMAND ----------
+
+# MAGIC %md
 # MAGIC ## Q1. Genei スペース を作成
 
 # COMMAND ----------
 
 # MAGIC %md
 # MAGIC
-# MAGIC 1. 現在のノートブックの左型タブにある`ワークスペース`を選択し、現在のディレクトリ（`01_data_engineering`)を表示
+# MAGIC 1. 現在のノートブックの左型タブにある`Workspace (Ctrl + Alt + E)`を選択し、現在のディレクトリ（`contents`)を表示
 # MAGIC 1. ハンバーガーメニュー（`︙`）を選択し、`作成` -> `Genieスペース`を選択
 # MAGIC 1. Genieスペースの作成画面にて下記セルの出力結果を設定して`Save`を選択 
 # MAGIC 1. チャットウィンドウにて、`データセットに含まれるテーブルについて説明して`という質問の回答が来ることを確認
