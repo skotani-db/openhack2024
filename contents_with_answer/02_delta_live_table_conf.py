@@ -46,7 +46,7 @@ def product2_bronze():
         .option("cloudFiles.format", "csv")
         .option("cloudFiles.inferColumnTypes", "false")
         .option("overwriteSchema", "true")
-        .load(f"/Volumes/{catalog_name}/{schema_name}/{volume_name}/product2*.csv")
+        .load(f"/Volumes/{catalog_name}/{schema_name}/{volume_name}/Product2*.csv")
     )
 
     df = (
@@ -75,7 +75,7 @@ def pricebook_entry__bronze():
         .option("cloudFiles.format", "csv")
         .option("cloudFiles.inferColumnTypes", "false")
         .option("overwriteSchema", "true")
-        .load(f"/Volumes/{catalog_name}/{schema_name}/{volume_name}/pricebookentry*.csv")
+        .load(f"/Volumes/{catalog_name}/{schema_name}/{volume_name}/PricebookEntry*.csv")
     )
 
     df = (
