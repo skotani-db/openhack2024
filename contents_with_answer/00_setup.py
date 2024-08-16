@@ -20,9 +20,11 @@
 # MAGIC
 # MAGIC - [Unity Catalog の特権の管理 - Azure Databricks | Microsoft Learn](https://learn.microsoft.com/ja-jp/azure/databricks/data-governance/unity-catalog/manage-privileges/#grant-permissions-on-objects-in-a-unity-catalog-metastore)
 # MAGIC
-# MAGIC カタログ作成処理が下記エラーのようになった場合には、 Cataglog Explorer にて手動でカタログを作成してください。
+# MAGIC カタログ作成処理が下記エラーのようになった場合には、 下記リンクを参考に Cataglog Explorer にて手動でカタログを作成してください。
 # MAGIC
 # MAGIC > Metastore storage root URL does not exist. Please provide a storage location for the catalog (for example 'CREATE CATALOG myCatalog MANAGED LOCATION '<location-path>'). Alternatively set up a metastore root storage location to provide a storage location for all catalogs in the metastore.
+# MAGIC
+# MAGIC 参考リンク： [カタログを作成する - Azure Databricks | Microsoft Learn](https://learn.microsoft.com/ja-jp/azure/databricks/catalogs/create-catalog#catalogexplorer)
 # MAGIC
 
 # COMMAND ----------
