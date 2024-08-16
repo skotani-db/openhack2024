@@ -68,7 +68,7 @@ display(dbutils.fs.ls(volume_dir))
 # MAGIC 1. **Delta Live Tables**タブを選択します。
 # MAGIC 1. **Create Pipeline**をクリックします。
 # MAGIC 1. **Pipeline name**を入力します。これらの名前は一意である必要があるため、上記のセルに記載されている **`pipeline_name`** を使用することをおすすめします。
-# MAGIC 1. **Product Edition**は**Advanced**のままにします。
+# MAGIC 1. **Serveless**をチェックします。
 # MAGIC 1. **Pipeline mode**では、**Trigger**を選択します。
 # MAGIC    * このフィールドでは、パイプラインの実行方法を指定します。
 # MAGIC    * **Trigger**パイプラインは一度だけ実行され、次の手動またはスケジュールされた更新まではシャットダウンします。
