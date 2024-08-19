@@ -925,7 +925,8 @@ display(spark.table(f"{tgt_table_name__c1_2_1}"))
 
 # COMMAND ----------
 
-## 事後処理
+# MAGIC %md
+# MAGIC ## 事後処理
 
 # COMMAND ----------
 
