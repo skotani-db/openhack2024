@@ -286,4 +286,11 @@ def d_product():
 # COMMAND ----------
 
 # MAGIC %md
+# MAGIC ## Challenge1. メダリオンアーキテクチャの導入の是非について、既存のデータ分析システムのアーキテクチャと比較した上で検討してください。
+# MAGIC
+# MAGIC こちらは Challenge のコンテンツであり、実施は任意です。
+
+# COMMAND ----------
+
+# MAGIC %md
 # MAGIC ## End
