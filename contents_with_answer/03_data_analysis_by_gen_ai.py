@@ -66,9 +66,9 @@ for init_n in init_notebooks:
 # MAGIC  
 # MAGIC 参考リンク
 # MAGIC
-# MAGIC - [AI/BI Genie Space とは何ですか? | Databricks on AWS](https://docs.databricks.com/ja/genie/index.html)
-# MAGIC - [AI/BI Genieスペースで信頼できるアセットを使用する | Databricks on AWS](https://docs.databricks.com/ja/genie/trusted-assets.html)
-# MAGIC - [効果的なGenieをキュレートする | Databricks on AWS](https://docs.databricks.com/ja/genie/best-practices.html)
+# MAGIC - [AI/BI Genie スペースとは](https://learn.microsoft.com/ja-jp/azure/databricks/genie/)
+# MAGIC - [Use trusted assets in AI/BI Genie spaces](https://learn.microsoft.com/ja-jp/azure/databricks/genie/trusted-assets)
+# MAGIC - [効果的な Genie スペースをキュレーションする](https://learn.microsoft.com/ja-jp/azure/databricks/genie/best-practices)
 
 # COMMAND ----------
 
@@ -211,8 +211,7 @@ df.display()
 # MAGIC
 # MAGIC 参考リンク
 # MAGIC
-# MAGIC - [AI/BI Genieスペースで信頼できるアセットを使用する | Databricks on AWS](https://docs.databricks.com/ja/genie/trusted-assets.html)
-# MAGIC
+# MAGIC - [Use trusted assets in AI/BI Genie spaces](https://learn.microsoft.com/ja-jp/azure/databricks/genie/trusted-assets)
 
 # COMMAND ----------
 
