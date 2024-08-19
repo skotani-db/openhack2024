@@ -1,10 +1,11 @@
 # Databricks notebook source
-# チーム名、あるいは、ユーザー名を設定
-user_name = "team_01" # or "FirstName_LastName"
+# チーム名、及び、ユーザー名を設定
+team_name = "team_01"  ## team_name はカタログ名となる
+user_name = "team_admin"  ## user_name はスキーマ名の一部となる
 print(f"user_name: `{user_name}`")
 
 # 利用するカタログ名を設定
-catalog_name = f"openhachason_{user_name}"
+catalog_name = team_name
 print(f"catalog_name: `{catalog_name}`")
 
 # COMMAND ----------
