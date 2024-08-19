@@ -92,11 +92,20 @@ spark.sql(
     """
 )
 
+checkpint_volume_name = "checkpint_volume_01"
+print(f"checkpint_volume_name: `{checkpint_volume_name}`")
+spark.sql(
+    f"""
+    CREATE VOLUME IF NOT EXISTS {catalog_name}.{schema_name}.{checkpint_volume_name}
+    """
+)
+
 # COMMAND ----------
 
 # 本ノートブックで利用するソースファイルを Volume に移動
 file_dir = f"/Volumes/{catalog_name}/{src_schema_name}/{src_volume_name}/{src_folder_name}"
 volume_dir = f"/Volumes/{catalog_name}/{schema_name}/{volume_name}"
+checkpint_volume_dir = f"/Volumes/{catalog_name}/{schema_name}/{checkpint_volume_name}"
 
 dbutils.fs.cp(file_dir, volume_dir, recurse=True)
 display(dbutils.fs.ls(volume_dir))
@@ -662,6 +671,267 @@ df.write.mode("overwrite").saveAsTable(tgt_table_name__3_2_1)
 
 # データが書き込まれたことを確認
 display(spark.table(tgt_table_name__3_2_1))
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC ## Challenge1. Databricks Auto Loader によりデータ取り込みを実施してください。
+# MAGIC
+# MAGIC こちらは Challenge のコンテンツであり、実施は任意です。
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC ### 実践例
+
+# COMMAND ----------
+
+src_file_path__c1_1_1 = f"{volume_dir}/Campaign.csv"
+checkpoint_dir__c1_1_1 = f"{checkpint_volume_dir}/campaign"
+tgt_table_name__c1_1_1 = f"{catalog_name}.{schema_name}.campaign__bronze"
+
+schema__c1_1_1 = """
+`id` STRING,
+`IsDeleted` STRING,
+`Name` STRING,
+`ParentId` STRING,
+`Type` STRING,
+`Status` STRING,
+`StartDate` STRING,
+`EndDate` STRING,
+`ExpectedRevenue` STRING,
+`BudgetedCost` STRING,
+`ActualCost` STRING,
+`ExpectedResponse` STRING,
+`NumberSent` STRING,
+`IsActive` STRING,
+`Description` STRING,
+`NumberOfLeads` STRING,
+`NumberOfConvertedLeads` STRING,
+`NumberOfContacts` STRING,
+`NumberOfResponses` STRING,
+`NumberOfOpportunities` STRING,
+`NumberOfWonOpportunities` STRING,
+`AmountAllOpportunities` STRING,
+`AmountWonOpportunities` STRING,
+`OwnerId` STRING,
+`CreatedDate` STRING,
+`CreatedById` STRING,
+`LastModifiedDate` STRING,
+`LastModifiedById` STRING,
+`SystemModstamp` STRING,
+`LastActivityDate` STRING,
+`LastViewedDate` STRING,
+`LastReferencedDate` STRING,
+`CampaignMemberRecordTypeId` STRING
+"""
+
+# COMMAND ----------
+
+# CSV の中身をチェック
+data = dbutils.fs.head(src_file_path__c1_1_1, 700)
+print(data)
+
+# COMMAND ----------
+
+# Bronzeテーブルを作成
+create_tbl_ddl = f"""
+CREATE OR REPLACE TABLE {tgt_table_name__c1_1_1}
+(
+{schema__c1_1_1},
+_rescued_data STRING,
+_datasource STRING,
+_ingest_timestamp timestamp
+
+)
+USING delta
+"""
+spark.sql(create_tbl_ddl)
+
+# COMMAND ----------
+
+# Databricks Auto Loader で利用するチェックポイントを初期化
+dbutils.fs.rm(checkpoint_dir__c1_1_1, True)
+
+# COMMAND ----------
+
+# ソースからデータを読み込む
+df = (
+    spark.readStream.format("cloudFiles")
+    .option("cloudFiles.format", "csv")
+    .option("cloudFiles.schemaLocation", checkpoint_dir__c1_1_1)
+    .option("cloudFiles.schemaHints", schema__c1_1_1)
+    .option("header", True)
+    .load(src_file_path__c1_1_1)
+)
+
+
+# 監査列として`_datasource`列と`_ingest_timestamp`列を追加
+df = (
+    df.select("*", "_metadata")
+    .withColumn("_datasource", df["_metadata.file_path"])
+    .withColumn("_ingest_timestamp", df["_metadata.file_modification_time"])
+    .drop("_metadata")
+)
+
+# COMMAND ----------
+
+# `checkpoint_dir__c1_1_1`変数をチェックポイントとして指定して、書き込み処理を実施。
+(
+    df.writeStream.trigger(availableNow=True)
+    .option("checkpointLocation", checkpoint_dir__c1_1_1)
+    .trigger(availableNow=True)
+    .toTable(tgt_table_name__c1_1_1)
+)
+
+# COMMAND ----------
+
+# データが書き込まれたことを確認
+display(spark.table(f"{tgt_table_name__c1_1_1}"))
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC ### ToDo `account__bronze`のパイプラインを Databricks Auto Loader にて作成してください。
+
+# COMMAND ----------
+
+src_file_path__c1_2_1 = f"{volume_dir}/Account.csv"
+checkpoint_dir__c1_2_1 = f"{checkpint_volume_dir}/account"
+tgt_table_name__c1_2_1 = f"{catalog_name}.{schema_name}.account__bronze"
+
+schema__c1_2_1 = """
+`id` STRING,
+`IsDeleted` STRING, 
+`MasterRecordId` STRING, 
+`Name` STRING, 
+`Type` STRING, 
+`ParentId` STRING, 
+`BillingStreet` STRING, 
+`BillingCity` STRING, 
+`BillingState` STRING, 
+`BillingPostalCode` STRING, 
+`BillingCountry` STRING, 
+`BillingLatitude` STRING, 
+`BillingLongitude` STRING, 
+`BillingGeocodeAccuracy` STRING, 
+`ShippingStreet` STRING, 
+`ShippingCity` STRING, 
+`ShippingState` STRING, 
+`ShippingPostalCode` STRING, 
+`ShippingCountry` STRING, 
+`ShippingLatitude` STRING, 
+`ShippingLongitude` STRING, 
+`ShippingGeocodeAccuracy` STRING, 
+`Phone` STRING, 
+`Fax` STRING, 
+`AccountNumber` STRING, 
+`Website` STRING, 
+`PhotoUrl` STRING, 
+`Sic` STRING, 
+`Industry` STRING, 
+`AnnualRevenue` STRING, 
+`NumberOfEmployees` STRING, 
+`Ownership` STRING, 
+`TickerSymbol` STRING, 
+`Description` STRING, 
+`Rating` STRING, 
+`Site` STRING, 
+`OwnerId` STRING, 
+`CreatedDate` STRING, 
+`CreatedById` STRING, 
+`LastModifiedDate` STRING, 
+`LastModifiedById` STRING, 
+`SystemModstamp` STRING, 
+`LastActivityDate` STRING, 
+`LastViewedDate` STRING, 
+`LastReferencedDate` STRING, 
+`Jigsaw` STRING, 
+`JigsawCompanyId` STRING, 
+`CleanStatus` STRING, 
+`AccountSource` STRING, 
+`DunsNumber` STRING, 
+`Tradestyle` STRING, 
+`NaicsCode` STRING, 
+`NaicsDesc` STRING, 
+`YearStarted` STRING, 
+`SicDesc` STRING, 
+`DandbCompanyId` STRING
+"""
+
+# COMMAND ----------
+
+# CSV の中身をチェック
+data = dbutils.fs.head(src_file_path__c1_2_1, 1000)
+print(data)
+
+# COMMAND ----------
+
+# Bronzeテーブルを作成
+create_tbl_ddl = f"""
+CREATE OR REPLACE TABLE {tgt_table_name__c1_2_1}
+(
+{schema__c1_2_1},
+_rescued_data STRING,
+_datasource STRING,
+_ingest_timestamp timestamp
+
+)
+USING delta
+"""
+spark.sql(create_tbl_ddl)
+
+# COMMAND ----------
+
+# Databricks Auto Loader で利用するチェックポイントを初期化
+dbutils.fs.rm(checkpoint_dir__c1_2_1, True)
+
+# COMMAND ----------
+
+# ToDo ソースからデータを読み込む
+df = (
+    spark.readStream.format("cloudFiles")
+    .option("cloudFiles.format", "csv")
+    .option("cloudFiles.schemaLocation", checkpoint_dir__c1_2_1)
+    .option("cloudFiles.schemaHints", schema__c1_2_1)
+    .option("header", True)
+    .load(src_file_path__c1_2_1)
+)
+
+# COMMAND ----------
+
+# ToDo 監査列として`_datasource`列と`_ingest_timestamp`列を追加
+df = (
+    df.select("*", "_metadata")
+    .withColumn("_datasource", df["_metadata.file_path"])
+    .withColumn("_ingest_timestamp", df["_metadata.file_modification_time"])
+    .drop("_metadata")
+)
+
+# COMMAND ----------
+
+# ToDo `checkpoint_dir__c1_2_1`変数をチェックポイントとして指定して、書き込み処理を実施。
+(
+    df.writeStream.trigger(availableNow=True)
+    .option("checkpointLocation", checkpoint_dir__c1_2_1)
+    .trigger(availableNow=True)
+    .toTable(tgt_table_name__c1_2_1)
+)
+
+# COMMAND ----------
+
+# データが書き込まれたことを確認
+display(spark.table(f"{tgt_table_name__c1_2_1}"))
+
+# COMMAND ----------
+
+## 事後処理
+
+# COMMAND ----------
+
+# ストリーム処理を停止
+for stream in spark.streams.active:
+    stream.stop()
 
 # COMMAND ----------
 
