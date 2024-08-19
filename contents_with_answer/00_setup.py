@@ -40,6 +40,7 @@ spark.sql(create_catalog_ddl)
 # MAGIC %md
 # MAGIC ## サンプルデータ配置用の Volume を作成
 # MAGIC
+# MAGIC ※本手順は、チーム内（同一カタログ）で一度だけ実施すれば十分です。
 
 # COMMAND ----------
 
