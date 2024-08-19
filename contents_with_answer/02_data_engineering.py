@@ -80,10 +80,21 @@ display(dbutils.fs.ls(volume_dir))
 # MAGIC    * このフィールドは任意です。指定しなかった場合、テーブルはメタストアに登録されませんが、引き続きDBFSでは使用できます。 このオプションに関して詳しく知りたい場合は、こちらの<a href="https://learn.microsoft.com/ja-jp/azure/databricks/delta-live-tables/publish-data" target="_blank">ドキュメント</a>を参考にしてください。
 # MAGIC 1. **Cluster mode**を**Fixed size**に設定し、ワーカーの数を **`1`** （1つ）に設定します。
 # MAGIC    * **Enable Auto Scaling**、**Min workers**、**Max workers**はパイプラインをクラスタ処理する際の基盤となるワーカー構成を制御します。 
+# MAGIC 1. **Notifications**にて**Add notification**を選択して下記の 3 つを設定します。
+# MAGIC    * **Email(s) (comma-separated)**にメールアドレスを入力
+# MAGIC    * **On update**をすべてチェック
+# MAGIC    * **On flow**をすべてチェック
 # MAGIC 1. **Configuratione**にて**Add configuration**を選択して下記の 3 つを設定します。
 # MAGIC    * **Key**に**mypipeline.catalog_name**を、Value にその key に相当する下記セルの値を設定
 # MAGIC    * **Key**に**mypipeline.schema_name**を、Value にその key に相当する下記セルの値を設定
 # MAGIC 1. **Create**をクリックします。
+# MAGIC
+# MAGIC
+# MAGIC 参考リンク
+# MAGIC
+# MAGIC - [パイプラインを作成する](https://learn.microsoft.com/ja-jp/azure/databricks/delta-live-tables/tutorial-pipelines#--create-a-pipeline)
+# MAGIC - [Delta Live Tables のパイプライン設定を構成する](https://learn.microsoft.com/ja-jp/azure/databricks/delta-live-tables/settings)
+# MAGIC - [サーバーレス コンピューティングで Delta Live Tables を使用してフル マネージド パイプラインを作成する](https://learn.microsoft.com/ja-jp/azure/databricks/delta-live-tables/serverless-dlt)
 
 # COMMAND ----------
 
