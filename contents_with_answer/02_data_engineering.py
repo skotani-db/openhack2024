@@ -78,8 +78,6 @@ display(dbutils.fs.ls(volume_dir))
 # MAGIC    * 次のエクササイズでは、構文について見ていきます。
 # MAGIC 1. **Destination**フィールドに、**`Storage options`**にて**`Unity Catalog`**をチェックし、下記のセルで **`catalog_name`**と**`schema_name`** の隣に表示されているカタログ名スキーマ名を指定します。
 # MAGIC    * このフィールドは任意です。指定しなかった場合、テーブルはメタストアに登録されませんが、引き続きDBFSでは使用できます。 このオプションに関して詳しく知りたい場合は、こちらの<a href="https://learn.microsoft.com/ja-jp/azure/databricks/delta-live-tables/publish-data" target="_blank">ドキュメント</a>を参考にしてください。
-# MAGIC 1. **Cluster mode**を**Fixed size**に設定し、ワーカーの数を **`1`** （1つ）に設定します。
-# MAGIC    * **Enable Auto Scaling**、**Min workers**、**Max workers**はパイプラインをクラスタ処理する際の基盤となるワーカー構成を制御します。 
 # MAGIC 1. **Notifications**にて**Add notification**を選択して下記の 3 つを設定します。
 # MAGIC    * **Email(s) (comma-separated)**にメールアドレスを入力
 # MAGIC    * **On update**をすべてチェック
