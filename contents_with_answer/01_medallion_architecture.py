@@ -765,14 +765,18 @@ df = (
     .load(src_file_path__c1_1_1)
 )
 
+# ファイル メタデータ列を追加
+df = df.select("*", "_metadata")
 
-# 監査列として`_datasource`列と`_ingest_timestamp`列を追加
+# ファイル メタデータ列に基づき監査列として`_datasource`列と`_ingest_timestamp`列を追加
 df = (
     df.select("*", "_metadata")
     .withColumn("_datasource", df["_metadata.file_path"])
     .withColumn("_ingest_timestamp", df["_metadata.file_modification_time"])
-    .drop("_metadata")
 )
+
+# ファイル メタデータ列を削除
+df = df.drop("_metadata")
 
 # COMMAND ----------
 
@@ -900,13 +904,19 @@ df = (
 
 # COMMAND ----------
 
-# ToDo 監査列として`_datasource`列と`_ingest_timestamp`列を追加
+# ToDo 監査列として`_datasource`列と`_ingest_timestamp`列を追加（`_metadata`列は追加しない）
+# ファイル メタデータ列を追加
+df = df.select("*", "_metadata")
+
+# ファイル メタデータ列に基づき監査列として`_datasource`列と`_ingest_timestamp`列を追加
 df = (
     df.select("*", "_metadata")
     .withColumn("_datasource", df["_metadata.file_path"])
     .withColumn("_ingest_timestamp", df["_metadata.file_modification_time"])
-    .drop("_metadata")
 )
+
+# ファイル メタデータ列を削除
+df = df.drop("_metadata")
 
 # COMMAND ----------
 
