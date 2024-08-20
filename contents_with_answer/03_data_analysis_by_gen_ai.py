@@ -53,7 +53,7 @@ for init_n in init_notebooks:
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ## Q1. Genei スペース を作成
+# MAGIC ## Q1. Genie スペース を作成
 
 # COMMAND ----------
 
@@ -106,7 +106,7 @@ table_list_df.display()
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ## Q2. General Instructions 修正による Genei スペース の改善
+# MAGIC ## Q2. General Instructions 修正による Genie スペース の改善
 
 # COMMAND ----------
 
@@ -149,7 +149,7 @@ print("""
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ## Q3. Example SQL Queries 追加による Genei スペース の改善
+# MAGIC ## Q3. Example SQL Queries 追加による Genie スペース の改善
 
 # COMMAND ----------
 
@@ -198,14 +198,14 @@ df.display()
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ## Q4. Trusted Assets 追加による Genei スペース の改善
+# MAGIC ## Q4. Trusted Assets 追加による Genie スペース の改善
 # MAGIC
 
 # COMMAND ----------
 
 # MAGIC %md
 # MAGIC 1. 左型にある`Instructions`タブを選択
-# MAGIC 1. `Trusted Assets`における`Add trusted asset`を選択
+# MAGIC 1. `SQL Functions`における`Add SQL Function`を選択
 # MAGIC 1. `Catalog`、`Schema`、および、`Function`に下記セルの出力結果を張り付けて、`Save`を選択
 # MAGIC 1. `+ New chat`を選択して`What is the pipeline for 東京都 and 大阪府?`という質問の回答が来ることを確認。データが存在しない場合には、データが存在する県（state）に変更。
 # MAGIC
