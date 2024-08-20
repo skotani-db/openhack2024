@@ -87,7 +87,7 @@ print("""
 print("")
 
 print("-- Default warehouse")
-print("Starter Warehouse")
+print("Serverless Starter Warehouse")
 print("")
 
 print("-- Tables")
