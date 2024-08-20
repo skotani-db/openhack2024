@@ -29,11 +29,12 @@
 
 # COMMAND ----------
 
-create_catalog_ddl = f"""
-CREATE CATALOG IF NOT EXISTS {catalog_name}
-""".strip()
-print(create_catalog_ddl)
-spark.sql(create_catalog_ddl)
+# カタログが存在しない場合には下記のコメントアウトを解除して実行
+# create_catalog_ddl = f"""
+# CREATE CATALOG IF NOT EXISTS {catalog_name}
+# """.strip()
+# print(create_catalog_ddl)
+# spark.sql(create_catalog_ddl)
 
 # COMMAND ----------
 
