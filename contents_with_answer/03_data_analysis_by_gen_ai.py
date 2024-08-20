@@ -205,7 +205,7 @@ df.display()
 
 # MAGIC %md
 # MAGIC 1. 左型にある`Instructions`タブを選択
-# MAGIC 1. `Trusted Assets`における`Add trusted asset`を選択
+# MAGIC 1. `SQL Functions`における`Add SQL Function`を選択
 # MAGIC 1. `Catalog`、`Schema`、および、`Function`に下記セルの出力結果を張り付けて、`Save`を選択
 # MAGIC 1. `+ New chat`を選択して`What is the pipeline for 東京都 and 大阪府?`という質問の回答が来ることを確認。データが存在しない場合には、データが存在する県（state）に変更。
 # MAGIC
