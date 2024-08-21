@@ -60,10 +60,16 @@ for init_n in init_notebooks:
 # MAGIC %md
 # MAGIC
 # MAGIC 1. 現在のノートブックの左型タブにある`Workspace (Ctrl + Alt + E)`を選択し、現在のディレクトリ（`contents`)を表示
-# MAGIC 1. ハンバーガーメニュー（`︙`）を選択し、`作成` -> `Genieスペース`を選択
-# MAGIC 1. Genieスペースの作成画面にて下記セルの出力結果を設定して`Save`を選択 
+# MAGIC 1. ハンバーガーメニュー（`︙`）を選択し、`作成` -> `Genieスペース`を選択 *1
+# MAGIC 1. Genieスペースの作成画面にて下記セルの出力結果を設定して`Save`を選択
 # MAGIC 1. チャットウィンドウにて、`データセットに含まれるテーブルについて説明して`という質問の回答が来ることを確認
-# MAGIC  
+# MAGIC
+# MAGIC *1 Genie スペースを作成できない場合には、下記の手順を実施して Genie スペースの有効化が必要です
+# MAGIC
+# MAGIC 1. Databricks Workspace にて右上のユーザーアイコンを選択後、`Previews`を選択
+# MAGIC 1. `Genie`の有効化に関するトグルを`On`に設定
+# MAGIC 1. ページをリロード後、Databricks Workspace の左メニューにて Genie が追加されたことを確認 
+# MAGIC
 # MAGIC 参考リンク
 # MAGIC
 # MAGIC - [AI/BI Genie スペースとは](https://learn.microsoft.com/ja-jp/azure/databricks/genie/)
