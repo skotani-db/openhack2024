@@ -1,0 +1,7 @@
+- snowfakery_version: 3
+
+- include_file: user.yml
+- include_file: Product2_PricebookEntry.yml
+- include_file: campaign.yml
+- include_file: account_contact_lead_opportunity_order.yml
+- include_file: case.yml

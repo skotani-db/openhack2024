@@ -1,0 +1,57 @@
+- var: snowfakery_locale
+  value: ja_JP
+- var: count
+  value: 1
+- var: name
+  value: Tablet x86 High
+- var: family
+  value: Table
+- var: unit_price
+  value: 30000
+
+- include_file: ../user.yml
+
+- object: Product2
+  count: ${{count}}
+  fields:
+    Name: ${{name}}
+    ProductCode: ${{fake.Bothify(text='PRD-#####')}}
+    Description: ${{name}}
+    IsActive: True
+    CreatedDate: ${{fake.date_this_year}}
+    CreatedById:
+        random_reference: User
+    LastModifiedDate: ${{fake.date_this_year}}
+    LastModifiedById:
+        random_reference: User
+    SystemModstamp: ${{fake.date_this_year}}
+    Family: ${{family}}
+    ExternalDataSourceId: null
+    ExternalId: null
+    DisplayUrl: null
+    QuantityUnitOfMeasure: null
+    IsDeleted: False
+    IsArchived: False
+    LastViewedDate: null
+    LastReferencedDate: null
+    StockKeepingUnit: null
+  friends:
+    - object: PricebookEntry
+      fields:
+        Name: ${{Product2.Name}}
+        Pricebook2Id: Null
+        Product2Id: 
+          reference: Product2
+        UnitPrice: ${{unit_price}}
+        IsActive: True
+        UseStandardPrice: True
+        CreatedDate: ${{fake.date_this_year}}
+        CreatedById:
+          random_reference: User
+        LastModifiedDate: ${{fake.date_this_year}}
+        LastModifiedById:
+          random_reference: User
+        SystemModstamp: ${{fake.date_this_year}}
+        ProductCode: ${{Product2.ProductCode}}
+        IsDeleted: False
+        IsArchived: False

@@ -1,0 +1,614 @@
+- var: snowfakery_locale
+  value: ja_JP
+- var: count
+  value: 100
+
+# - include_file: user.yml
+# - include_file: campaign.yml
+# - include_file: Product2_PricebookEntry.yml
+
+- object: Account
+  count: ${{count}}
+  fields:
+    IsDeleted: False
+    MasterRecordId: null
+    Name: ${{fake.company}}
+    Type: 
+      random_choice: 
+        Customer: 50%
+        Partner: 50%
+    ParentId: null
+    BillingStreet: null
+    BillingCity: null
+    BillingState: ${{fake.state}}
+    BillingPostalCode: null
+    BillingCountry: Japan
+    ShippingStreet: null
+    ShippingCity: null
+    ShippingState: ${{BillingState}}
+    ShippingPostalCode: null
+    ShippingCountry: Japan
+    Phone: ${{fake.phone_number}}
+    Fax: ${{fake.phone_number}}
+    AccountNumber: ${{fake.random_int(min=10000, max=99999)}}
+    Website: ${{fake.url}}
+    Sic: ${{fake.random_int(min=1000, max=9999)}}
+    Industry: 
+      random_choice: 
+        Technology: 25%
+        Finance: 25%
+        Healthcare: 25%
+        Retail: 25%
+    AnnualRevenue: ${{fake.random_int(min=1000000, max=50000000)}}
+    NumberOfEmployees: ${{fake.random_int(min=10, max=5000)}}
+    Ownership: null
+    TickerSymbol: ${{fake.lexify(text='???')}}
+    Description: null
+    Rating: 
+      random_choice: 
+        Hot: 33%
+        Warm: 33%
+        Cold: 34%
+    Site: null
+    OwnerId:
+          random_reference: User
+    CreatedDate: ${{fake.date_this_year}}
+    CreatedById:
+          random_reference: User
+    LastModifiedDate: ${{fake.date_this_year}}
+    LastModifiedById: 
+          random_reference: User
+    SystemModstamp: ${{fake.date_this_year}}
+    LastActivityDate: null
+    LastViewedDate: null
+    LastReferencedDate: null
+    Jigsaw: null
+    JigsawCompanyId: null
+    CleanStatus: 
+      random_choice: 
+        Matched: 33%
+        NotMatched: 33%
+        Pending: 34%
+    AccountSource: 
+      random_choice: 
+        Web: 25%
+        Referral: 25%
+        Partner: 25%
+        Direct: 25%
+    DunsNumber: ${{fake.random_int(min=100000000, max=999999999)}}
+    Tradestyle: null
+    NaicsCode: ${{fake.random_int(min=1000, max=9999)}}
+    NaicsDesc: ${{fake.word}}
+    YearStarted: ${{fake.random_int(min=1900, max=2024)}}
+    SicDesc: null
+    DandbCompanyId: null
+
+  friends:
+    - object: Contact
+      count:
+        random_number:
+          min: 1
+          max: 10
+      fields:
+        IsDeleted: null
+        MasterRecordId: null
+        AccountId:
+          reference: Account
+        LastName:
+          fake: last_name
+        FirstName:
+          fake: first_name
+        Salutation:
+          random_choice:
+            Mr.: 30%
+            Ms.: 30%
+            Mrs.: 20%
+            Dr.: 10%
+            Prof.: 10%
+        Name: ${{Contact.FirstName}} ${{Contact.LastName}}
+        OtherStreet: null
+        OtherCity: null
+        OtherState: ${{Account.ShippingState}}
+        OtherPostalCode: null
+        OtherCountry: Japan
+        OtherLatitude: null
+        OtherLongitude: null
+        OtherGeocodeAccuracy:
+          random_choice:
+            Rooftop: 50%
+            Block: 25%
+            Street: 25%
+        MailingStreet: null
+        MailingCity: null
+        MailingState: ${{Account.ShippingState}}
+        MailingPostalCode: null
+        MailingCountry: Japan
+        MailingLatitude: null
+        MailingLongitude: null
+        MailingGeocodeAccuracy:
+          random_choice:
+            Rooftop: 50%
+            Block: 25%
+            Street: 25%
+        Phone:
+          fake: phone_number
+        Fax:
+          fake: phone_number
+        MobilePhone:
+          fake: phone_number
+        HomePhone:
+          fake: phone_number
+        OtherPhone:
+          fake: phone_number
+        AssistantPhone:
+          fake: phone_number
+        ReportsToId:
+          fake: uuid4
+        Email:
+          fake: email
+        Title:
+          fake: job
+        Department:
+          random_choice:
+            Sales: 25%
+            Marketing: 25%
+            HR: 25%
+            IT: 25%
+        AssistantName:
+          fake: name
+        LeadSource:
+          random_choice:
+            Web: 20%
+            Phone: 20%
+            Email: 20%
+            Referral: 20%
+            Partner: 20%
+        Birthdate:
+          fake: date_of_birth
+        Description: null
+        OwnerId:
+          random_reference: User
+        CreatedDate:
+          fake: date_this_year
+        CreatedById:
+          random_reference: User
+        LastModifiedDate:
+          fake: date_this_year
+        LastModifiedById:
+          random_reference: User
+        SystemModstamp:
+          fake: date_this_year
+        LastActivityDate:
+          fake: date_this_year
+        LastCURequestDate:
+          fake: date_this_year
+        LastCUUpdateDate:
+          fake: date_this_year
+        LastViewedDate:
+          fake: date_this_year
+        LastReferencedDate:
+          fake: date_this_year
+        EmailBouncedReason:
+          random_choice:
+            InvalidAddress: 30%
+            MailboxFull: 20%
+            UnknownUser: 20%
+            Other: 30%
+        EmailBouncedDate:
+          fake: date_this_year
+        IsEmailBounced:
+          fake: boolean
+        PhotoUrl:
+          fake: image_url
+        Jigsaw:
+          fake: word
+        JigsawContactId:
+          random_reference: User
+        CleanStatus:
+          random_choice:
+            Clean: 50%
+            Pending: 25%
+            Dirty: 25%
+        IndividualId:
+          fake: uuid4
+        IsPriorityRecord:
+          fake: boolean
+        ContactSource:
+          random_choice:
+            Web: 20%
+            Email: 20%
+            Phone: 20%
+            Partner: 20%
+            Referral: 20%
+        IsDeleted: False
+        MasterRecordId: Null
+        AccountId: 
+          reference: Account
+        LastName: Null
+        FirstName: Null
+        Salutation: Null
+        Name: Null
+        OtherStreet: Null
+        OtherCity: Null
+        OtherState: Null
+        OtherPostalCode: Null
+        OtherCountry: Null
+        OtherLatitude: Null
+        OtherLongitude: Null
+        OtherGeocodeAccuracy: Null
+        MailingStreet: Null
+        MailingCity: Null
+        MailingState: Null
+        MailingPostalCode: Null
+        MailingCountry: Null
+        MailingLatitude: Null
+        MailingLongitude: Null
+        MailingGeocodeAccuracy: Null
+        Phone: Null
+        Fax: Null
+        MobilePhone: Null
+        HomePhone: Null
+        OtherPhone: Null
+        AssistantPhone: Null
+        ReportsToId: Null
+        Email: Null
+        Title: Null
+        Department: Null
+        AssistantName: Null
+        LeadSource: Null
+        Birthdate: Null
+        Description: Null
+        OwnerId: Null
+        CreatedDate: Null
+        CreatedById: Null
+        LastModifiedDate: Null
+        LastModifiedById: Null
+        SystemModstamp: Null
+        LastActivityDate: Null
+        LastCURequestDate: Null
+        LastCUUpdateDate: Null
+        LastViewedDate: Null
+        LastReferencedDate: Null
+        EmailBouncedReason: Null
+        EmailBouncedDate: Null
+        IsEmailBounced: Null
+        PhotoUrl: Null
+        Jigsaw: Null
+        JigsawContactId: Null
+        CleanStatus: Null
+        IndividualId: Null
+        IsPriorityRecord: Null
+        ContactSource: Null
+
+      friends:
+        - object: Lead
+          count:
+            random_number:
+              min: 5
+              max: 10
+          fields:
+            ConvertedAccountId: ${{Contact.AccountId}}
+            ConvertedContactId:
+              reference: Contact
+            IsDeleted: False
+            MasterRecordId: null
+            LastName: ${{Contact.LastName}}
+            FirstName: ${{Contact.FirstName}}
+            Salutation:
+              random_choice:
+                Mr.: 30%
+                Ms.: 30%
+                Mrs.: 20%
+                Dr.: 10%
+                Prof.: 10%
+            Name: ${{Contact.Name}}
+            Title: ${{Contact.Title}}
+            Company: ${{Account.Name}}
+            Street: null
+            City: null
+            State: ${{Account.ShippingState}}
+            PostalCode: null
+            Country: Japan
+            Latitude: null
+            Longitude: null
+            GeocodeAccuracy:
+              random_choice:
+                Rooftop: 50%
+                Block: 25%
+                Street: 25%
+            Phone:
+              fake: phone_number
+            MobilePhone:
+              fake: phone_number
+            Fax:
+              fake: phone_number
+            Email:
+              fake: email
+            Website:
+              fake: url
+            Description: null
+            LeadSource:
+              random_choice:
+                Web: 20%
+                Phone: 20%
+                Email: 20%
+                Referral: 20%
+                Partner: 20%
+            Status:
+              random_choice:
+                Open: 25%
+                Contacted: 25%
+                Qualified: 25%
+                Closed: 25%
+            Industry:
+              random_choice:
+                Technology: 20%
+                Finance: 20%
+                Healthcare: 20%
+                Education: 20%
+                Retail: 20%
+            Rating:
+              random_choice:
+                Hot: 30%
+                Warm: 40%
+                Cold: 30%
+            AnnualRevenue: null
+            NumberOfEmployees: null
+            OwnerId:
+              random_reference: User
+            CreatedDate:
+              fake: date_this_year
+            CreatedById:
+              random_reference: User
+            LastModifiedDate:
+              fake: date_this_year
+            LastModifiedById:
+              random_reference: User
+            SystemModstamp:
+              fake: date_this_year
+            LastActivityDate:
+              fake: date_this_year
+            LastViewedDate:
+              fake: date_this_year
+            LastReferencedDate:
+              fake: date_this_year
+            EmailBouncedReason:
+              random_choice:
+                InvalidAddress: 30%
+                MailboxFull: 20%
+                UnknownUser: 20%
+                Other: 30%
+            EmailBouncedDate:
+              fake: date_this_year
+            IndividualId: null
+            IsPriorityRecord:
+             fake: boolean
+            PhotoUrl: Null
+            IsConverted: Null
+            ConvertedDate: Null
+            ConvertedOpportunityId: Null
+            IsUnreadByOwner: Null
+            Jigsaw: Null
+            JigsawContactId: Null
+            CleanStatus: Null
+            CompanyDunsNumber: Null
+            DandbCompanyId: Null
+
+          friends:
+            - object: Opportunity
+              count:
+                random_choice:
+                  0: 64%
+                  1: 36%
+              fields:
+                IsDeleted: False
+                AccountId:
+                  reference: Account
+                NextStep: Null
+                PushCount: Null
+                RecordTypeId: Null
+                IsPrivate:
+                  fake: boolean
+                Name: The ${{Contact.LastName}} Opportunity by  acquired through the ${{Campaign.Name}} campaign. 
+                Description: null
+                StageName:
+                  random_choice:
+                    Prospecting: 10%
+                    Qualification: 10%
+                    Needs Analysis: 10%
+                    Value Proposition: 10%
+                    Id. Decision Makers: 10%
+                    Perception Analysis: 10%
+                    Proposal/Price Quote: 10%
+                    Negotiation/Review: 10%
+                    Closed Won: 10%
+                    Closed Lost: 10%
+                Amount: null
+                Probability:
+                  random_choice:
+                    0: 20%
+                    10: 10%
+                    20: 10%
+                    30: 10%
+                    40: 10%
+                    50: 10%
+                    60: 10%
+                    70: 10%
+                    80: 5%
+                    90: 5%
+                    100: 10%
+                ExpectedRevenue: null
+                TotalOpportunityQuantity:
+                  random_number:
+                    min: 5
+                    max: 50
+                    step: 5
+                CloseDate:
+                  fake: date_this_year
+                Type:
+                  random_choice:
+                    New Customer: 30%
+                    Existing Customer - Upgrade: 30%
+                    Existing Customer - Downgrade: 10%
+                    Existing Customer - Replacement: 10%
+                    Existing Customer - Expansion: 20%
+                LeadSource:
+                  random_choice:
+                    Web: 20%
+                    Phone: 20%
+                    Email: 20%
+                    Referral: 20%
+                    Partner: 20%
+                IsWon: null
+                IsClosed: True
+                ForecastCategory:
+                  random_choice:
+                    Omitted: 20%
+                    Pipeline: 20%
+                    BestCase: 20%
+                    Commit: 20%
+                    Closed: 20%
+                ForecastCategoryName:
+                  if:
+                    - choice:
+                      when: ${{ForecastCategory == 'Omitted'}}
+                      pick: Omitted
+                    - choice:
+                      when: ${{ForecastCategory == 'Pipeline'}}
+                      pick: Pipeline
+                    - choice:
+                      when: ${{ForecastCategory == 'BestCase'}}
+                      pick: 'Best Case'
+                    - choice:
+                      when: ${{ForecastCategory == 'Commit'}}
+                      pick: Commit
+                    - choice:
+                      when: ${{ForecastCategory == 'Closed'}}
+                      pick: Closed
+                CampaignId:
+                  random_reference: Campaign
+                HasOpportunityLineItem:
+                  fake: boolean
+                Pricebook2Id: null
+                OwnerId:
+                  random_reference: User
+                CreatedDate:
+                  fake: date_this_year
+                CreatedById:
+                  random_reference: User
+                LastModifiedDate:
+                  fake: date_this_year
+                LastModifiedById:
+                  random_reference: User
+                SystemModstamp:
+                  fake: date_this_year
+                LastActivityDate:
+                  fake: date_this_year
+                LastStageChangeDate:
+                  fake: date_this_year
+                FiscalQuarter:
+                  fake: random_int
+                FiscalYear:
+                  fake: year
+                Fiscal:
+                  fake: word
+                CurrencyIsoCode: JPY
+                ContactId:
+                  reference: Contact
+                LastViewedDate:
+                  fake: date_this_year
+                LastReferencedDate:
+                  fake: date_this_year
+                HasOpenActivity:
+                  fake: boolean
+                HasOverdueTask:
+                  fake: boolean
+                LastAmountChangedHistoryId: null
+                LastCloseDateChangedHistoryId: null
+                Product2Id__c:
+                  random_reference: Product2
+
+              friends:
+                - object: Order
+                  count:
+                    random_choice:
+                      0: 72%
+                      1: 28%
+                  fields:
+                    AccountId:
+                      reference: Account
+                    Pricebook2Id: null
+                    OwnerId:
+                      random_reference: User
+                    ContractId:
+                      fake: uuid4
+                    ActivatedById:
+                      random_reference: User
+                    CompanyAuthorizedById:
+                      random_reference: User
+                    CompanyAuthorizedDate:
+                      fake: date_this_year
+                    CreatedById:
+                      random_reference: User
+                    LastModifiedById:
+                      random_reference: User
+                    SystemModstamp:
+                      fake: date_this_year
+                    LastViewedDate:
+                      fake: date_this_year
+                    LastReferencedDate:
+                      fake: date_this_year
+                    Status:
+                      random_choice:
+                        Draft: 20%
+                        Activated: 30%
+                        'Completed': 20%
+                        'Canceled': 30%
+                    StatusCode:
+                      random_choice:
+                        Draft: 20%
+                        Activated: 30%
+                        'Completed': 20%
+                        'Canceled': 30%
+                    OrderNumber: ${{fake.Bothify(text='ORD-#####')}}
+                    EffectiveDate: ${{Opportunity.CloseDate}}
+                    EndDate: ${{Opportunity.CloseDate}}
+                    TotalAmount: null
+                    Description: null
+                    CurrencyIsoCode: JPY
+                    ActivatedDate: ${{Opportunity.CloseDate}}
+                    Type:
+                      random_choice:
+                        Standard: 50%
+                        ReductionOrder: 50%
+                    OrderReferenceNumber: null
+                    OriginalOrderId: Null
+                    IsReductionOrder: Null
+                    CustomerAuthorizedById: Null
+                    CustomerAuthorizedDate: Null
+                    BillingStreet: Null
+                    BillingCity: Null
+                    BillingState:  ${{Account.BillingState}}
+                    BillingPostalCode: Null
+                    BillingCountry: Null
+                    BillingLatitude: Null
+                    BillingLongitude: Null
+                    BillingGeocodeAccuracy: Null
+                    ShippingStreet: Null
+                    ShippingCity: Null
+                    ShippingState: ${{Account.ShippingState}}
+                    ShippingPostalCode: Null
+                    ShippingCountry: Null
+                    ShippingLatitude: Null
+                    ShippingLongitude: Null
+                    ShippingGeocodeAccuracy: Null
+                    Name: Null
+                    PoDate: Null
+                    PoNumber: Null
+                    BillToContactId: Null
+                    ShipToContactId: Null
+                    CreatedDate: Null
+                    LastModifiedDate: Null
+                    IsDeleted: False
+                    OpportunityId__c:
+                      reference: Opportunity

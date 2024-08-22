@@ -65,6 +65,26 @@ def product2_bronze():
 # COMMAND ----------
 
 # ToDo
+@dlt.table(
+    name="pricebook_entry__bronze",
+    comment="This table contains the bronze data for pricebook_entry__bronze",
+)
+def pricebook_entry__bronze():
+    df = (
+        spark.readStream.format("cloudFiles")
+        .option("cloudFiles.format", "csv")
+        .option("cloudFiles.inferColumnTypes", "false")
+        .option("overwriteSchema", "true")
+        .load(f"/Volumes/{catalog_name}/{schema_name}/{volume_name}/PricebookEntry*.csv")
+    )
+
+    df = (
+        df.select("*", "_metadata")
+        .withColumn("_datasource", df["_metadata.file_path"])
+        .withColumn("_ingest_timestamp", df["_metadata.file_modification_time"])
+        .drop("_metadata")
+    )
+    return df
 
 # COMMAND ----------
 
@@ -139,6 +159,51 @@ def product2__silver():
 # COMMAND ----------
 
 # ToDo
+@dlt.table(
+  name="pricebook_entry__silver",
+)
+def product2__silver():
+    df = spark.sql(
+        """
+        with slv_records (
+        SELECT
+            Id,
+            MAX(_ingest_timestamp) AS max_ingest_timestamp
+            FROM
+                LIVE.pricebook_entry__bronze
+            GROUP BY
+                id
+        )
+        SELECT
+            brz.`Id`,
+            brz.`Name`,
+            brz.`Pricebook2Id`,
+            brz.`Product2Id`,
+            brz.`UnitPrice`::DECIMAL(16, 0),
+            brz.`IsActive`::BOOLEAN,
+            brz.`UseStandardPrice`::BOOLEAN,
+            brz.`CreatedDate`::TIMESTAMP,
+            brz.`CreatedById`,
+            brz.`LastModifiedDate`::TIMESTAMP,
+            brz.`LastModifiedById`,
+            brz.`SystemModstamp`::TIMESTAMP,
+            brz.`ProductCode`,
+            brz.`IsDeleted`::BOOLEAN,
+            brz.`IsArchived`::BOOLEAN,
+            brz._datasource,
+            brz._ingest_timestamp::timestamp
+            
+            FROM
+                LIVE.pricebook_entry__bronze AS brz
+            INNER JOIN 
+                slv_records AS slv
+                ON 
+                    brz.id =  slv.id
+                    AND brz._ingest_timestamp =  slv.max_ingest_timestamp
+        """
+    )
+    df = df.drop_duplicates(['Id'])
+    return df
 
 # COMMAND ----------
 
@@ -195,6 +260,28 @@ def product_count_by_family():
 # COMMAND ----------
 
 # ToDo
+@dlt.table(
+  name="d_product",
+)
+def d_product():
+    df = spark.sql(
+        """
+        SELECT
+        prd.*
+            EXCEPT (
+            _datasource,
+            _ingest_timestamp
+            ),
+        pbk.UnitPrice
+        FROM
+            LIVE.product2__silver prd
+        INNER JOIN 
+            LIVE.pricebook_entry__silver pbk
+        on 
+            prd.id = pbk.Product2Id
+        """
+    )
+    return df
 
 # COMMAND ----------
 

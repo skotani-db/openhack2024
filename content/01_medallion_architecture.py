@@ -215,8 +215,6 @@ tgt_table_name__1_2_1 = f"{catalog_name}.{schema_name}.pricebook_entry__bronze"
 # COMMAND ----------
 
 # ToDo CSV の中身をチェック
-data = dbutils.fs.head(src_file_path__1_2_1, 700)
-print(data)
 
 # COMMAND ----------
 
@@ -249,21 +247,6 @@ spark.sql(create_tbl_ddl)
 # COMMAND ----------
 
 # ToDo 書き込み処理を記述してください
-# ソースからデータを読み込む
-df = (
-    spark.read.format("csv")
-    .option("header", "true")
-    .option("inferSchema", "False")
-    .load(src_file_path__1_2_1)
-)
-
-# 監査列として`_datasource`列と`_ingest_timestamp`列を追加
-df = (
-    df.select("*", "_metadata")
-    .withColumn("_datasource", df["_metadata.file_path"])
-    .withColumn("_ingest_timestamp", df["_metadata.file_modification_time"])
-    .drop("_metadata")
-)
 
 # COMMAND ----------
 
@@ -273,12 +256,6 @@ df.display()
 # COMMAND ----------
 
 # ToDo テーブルへ書き込みを実施してください。
-(
-    df.write.format("delta")
-    .mode("append")
-    .option("mergeSchema", "true")
-    .saveAsTable(tgt_table_name__1_2_1)
-)
 
 # COMMAND ----------
 
@@ -527,19 +504,6 @@ df.display()
 # COMMAND ----------
 
 # ToDo テーブルへ書き込みを実施してください。
-returned_df = spark.sql(f'''
-MERGE INTO {tgt_table_name__2_2_1} AS tgt
-  USING {temp_view_name} AS src
-  
-  ON tgt.Id = src.Id 
-
-  WHEN MATCHED
-  AND tgt._ingest_timestamp < src._ingest_timestamp
-    THEN UPDATE SET *
-  WHEN NOT MATCHED
-    THEN INSERT *
-''')
-returned_df.display()
 
 # COMMAND ----------
 
@@ -640,22 +604,6 @@ spark.sql(
 # COMMAND ----------
 
 # ToDo 書き込み想定のデータフレームを作成してください。
-sql = f"""
-SELECT
-  prd.*
-    EXCEPT (
-      _datasource,
-      _ingest_timestamp
-    ),
-  pbk.UnitPrice
-  FROM
-    {src_table_name__3_2_1} prd
-  INNER JOIN 
-    {src_table_name__3_2_2} pbk
-  on 
-    prd.id = pbk.Product2Id
-"""
-df = spark.sql(sql)
 
 # COMMAND ----------
 
@@ -665,7 +613,6 @@ df.display()
 # COMMAND ----------
 
 # ToDo テーブルへ書き込みを実施してください。
-df.write.mode("overwrite").saveAsTable(tgt_table_name__3_2_1)
 
 # COMMAND ----------
 
@@ -894,40 +841,14 @@ dbutils.fs.rm(checkpoint_dir__c1_2_1, True)
 
 # ToDo `checkpoint_dir__c1_2_1`変数を`cloudFiles.schemaLocation`に指定して、ソースからデータの読み込み処理を記述してください。
 # Hint コード修正後に想定通りに動作しない場合にはDatabricks Auto Loader で利用するチェックポイントを初期化してください。
-df = (
-    spark.readStream.format("cloudFiles")
-    .option("cloudFiles.format", "csv")
-    .option("cloudFiles.schemaLocation", checkpoint_dir__c1_2_1)
-    .option("cloudFiles.schemaHints", schema__c1_2_1)
-    .option("header", True)
-    .load(src_file_path__c1_2_1)
-)
 
 # COMMAND ----------
 
 # ToDo 監査列として`_datasource`列と`_ingest_timestamp`列を追加（`_metadata`列は追加しない）
-# ファイル メタデータ列を追加
-df = df.select("*", "_metadata")
-
-# ファイル メタデータ列に基づき監査列として`_datasource`列と`_ingest_timestamp`列を追加
-df = (
-    df.select("*", "_metadata")
-    .withColumn("_datasource", df["_metadata.file_path"])
-    .withColumn("_ingest_timestamp", df["_metadata.file_modification_time"])
-)
-
-# ファイル メタデータ列を削除
-df = df.drop("_metadata")
 
 # COMMAND ----------
 
 # ToDo `checkpoint_dir__c1_2_1`変数をチェックポイントとして指定して、書き込み処理を実施してください。
-(
-    df.writeStream.trigger(availableNow=True)
-    .option("checkpointLocation", checkpoint_dir__c1_2_1)
-    .trigger(availableNow=True)
-    .toTable(tgt_table_name__c1_2_1)
-)
 
 # COMMAND ----------
 

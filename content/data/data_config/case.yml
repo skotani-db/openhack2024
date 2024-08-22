@@ -1,0 +1,68 @@
+- var: snowfakery_locale
+  value: ja_JP
+- var: count
+  value: 497
+
+# - include_file: user.yml
+# - include_file: Product2_PricebookEntry.yml
+# - include_file: account_contact_lead_opportunity_order.yml
+
+- object: Case
+  count: ${{count}}
+  fields:
+    IsDeleted: False
+    MasterRecordId: null
+    CaseNumber: ${{fake.random_int(min=40000, max=50000)}}
+    ContactId: null
+    AccountId:
+      random_reference: Account
+    AssetId: null
+    ParentId: null
+    SuppliedName: ${{fake.name}}
+    SuppliedEmail: ${{fake.email}}
+    SuppliedPhone: ${{fake.phone_number}}
+    SuppliedCompany: ${{fake.company}}
+    Type: 
+      random_choice: 
+        問い合わせ: 80%
+        クレーム: 20%
+    Status: 
+      random_choice: 
+        新規: 25%
+        処理中: 25%
+        完了: 25%
+        クローズ: 25%
+    Priority: 
+      random_choice: 
+        高: 33%
+        中: 34%
+        低: 33%
+    Origin: 
+      random_choice: 
+        Web: 20%
+        Email: 20%
+        Phone: 20%
+        Social: 20%
+        Other: 20%
+    Subject: ${{fake.sentence(nb_words=6)}}
+    Description: "${{fake.text}}"
+    IsClosed: ${{fake.boolean}}
+    ClosedDate: ${{fake.date_this_year}}
+    CreatedDate: ${{fake.date_this_year}}
+    CreatedById: ${{fake.uuid4}}
+    LastModifiedDate: ${{fake.date_this_year}}
+    LastModifiedById: ${{fake.uuid4}}
+    SystemModstamp: ${{fake.date_this_year}}
+    LastViewedDate: null
+    LastReferencedDate: null
+    Reason: Null
+    IsEscalated: Null
+    OwnerId: 
+      reference: Account
+    ContactPhone: Null
+    ContactMobile: Null
+    ContactEmail: Null
+    ContactFax: Null
+    Comments: Null
+    Product2Id__c:
+      random_reference: Product2
