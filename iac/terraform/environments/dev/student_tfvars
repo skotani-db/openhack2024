@@ -1,0 +1,4 @@
+metastore_id = ""
+tags = {
+  project : "openhack-lakehouse"
+}
