@@ -482,8 +482,8 @@ SELECT
 '''
 df = spark.sql(brz_to_slv_sql)
 
-# ToDo dropDuplicates関数にて、主キーの一意性を保証してください。
-df = df
+# dropDuplicates関数にて、主キーの一意性を保証。連携日ごとの一意性が保証されないことがあるため。
+df = df.drop_duplicates(['Id'])
 
 # COMMAND ----------
 
@@ -823,13 +823,13 @@ spark.sql(create_tbl_ddl)
 
 # COMMAND ----------
 
+# Hint コード修正後に想定通りに動作しない場合にはDatabricks Auto Loader で利用するチェックポイントを初期化してください。
 # Databricks Auto Loader で利用するチェックポイントを初期化
 dbutils.fs.rm(checkpoint_dir__c1_2_1, True)
 
 # COMMAND ----------
 
 # ToDo `checkpoint_dir__c1_2_1`変数を`cloudFiles.schemaLocation`に指定して、ソースからデータの読み込み処理を記述してください。
-# Hint コード修正後に想定通りに動作しない場合にはDatabricks Auto Loader で利用するチェックポイントを初期化してください。
 
 # COMMAND ----------
 

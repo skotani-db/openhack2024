@@ -387,8 +387,6 @@ df = spark.sql(brz_to_slv_sql)
 # dropDuplicates関数にて、主キーの一意性を保証。連携日ごとの一意性が保証されないことがあるため。
 df = df.drop_duplicates(['Id'])
 
-
-
 # COMMAND ----------
 
 # 処理後の結果を確認
@@ -464,7 +462,7 @@ spark.sql(
 
 # COMMAND ----------
 
-# 下記の処理を実行したデータフレーム（df）を作成
+# ToDo 下記の処理を実行したデータフレーム（df）を作成してください。
 ## 1. ブロンズテーブルから主キー（`Id`）ごとに`_ingest_timestamp`列の最大日を抽出したサブセットを作成
 ## 2. 主キー＋`_ingest_timestamp`列の条件で、1のサブセットとブロンズテーブルを結合
 ## 3. ブロンズテーブルのデータ型をシルバーテーブルと同一のデータ型に変換
@@ -883,13 +881,13 @@ spark.sql(create_tbl_ddl)
 
 # COMMAND ----------
 
+# Hint コード修正後に想定通りに動作しない場合にはDatabricks Auto Loader で利用するチェックポイントを初期化してください。
 # Databricks Auto Loader で利用するチェックポイントを初期化
 dbutils.fs.rm(checkpoint_dir__c1_2_1, True)
 
 # COMMAND ----------
 
 # ToDo `checkpoint_dir__c1_2_1`変数を`cloudFiles.schemaLocation`に指定して、ソースからデータの読み込み処理を記述してください。
-# Hint コード修正後に想定通りに動作しない場合にはDatabricks Auto Loader で利用するチェックポイントを初期化してください。
 df = (
     spark.readStream.format("cloudFiles")
     .option("cloudFiles.format", "csv")
