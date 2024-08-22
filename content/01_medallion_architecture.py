@@ -314,7 +314,7 @@ spark.sql(
 # COMMAND ----------
 
 # 下記の処理を実行したデータフレーム（df）を作成
-## 1. ブロンズテーブルから主キー（`order_id`）ごとに`_ingest_timestamp`列の最大日を抽出したサブセットを作成
+## 1. ブロンズテーブルから主キー（`Id`）ごとに`_ingest_timestamp`列の最大日を抽出したサブセットを作成
 ## 2. 主キー＋`_ingest_timestamp`列の条件で、1のサブセットとブロンズテーブルを結合
 ## 3. ブロンズテーブルのデータ型をシルバーテーブルと同一のデータ型に変換
 brz_to_slv_sql = f'''
@@ -364,18 +364,17 @@ df = spark.sql(brz_to_slv_sql)
 # dropDuplicates関数にて、主キーの一意性を保証。連携日ごとの一意性が保証されないことがあるため。
 df = df.drop_duplicates(['Id'])
 
-# 一時ビューからシルバーテーブルに対して、MERGE文によりアップサート処理を実施。
-# 一時ビューの`_ingest_timestamp`列がシルバーテーブルの`_ingest_timestamp`列以降である場合のみ、UPDATE処理が実行。
-## 一時ビューを作成
-temp_view_name = f'_tmp_product2__silver'
-df.createOrReplaceTempView(temp_view_name)
-
 # COMMAND ----------
 
 # 処理後の結果を確認
 df.display()
 
 # COMMAND ----------
+
+# 一時ビューからシルバーテーブルに対して、MERGE文によりアップサート処理を実施。
+## 一時ビューを作成
+temp_view_name = f'_tmp_product2__silver'
+df.createOrReplaceTempView(temp_view_name)
 
 ## Merge処理を実行
 returned_df = spark.sql(f'''
@@ -440,12 +439,8 @@ spark.sql(
 
 # COMMAND ----------
 
-src_table_name__2_2_1
-
-# COMMAND ----------
-
-# 下記の処理を実行したデータフレーム（df）を作成
-## 1. ブロンズテーブルから主キー（`order_id`）ごとに`_ingest_timestamp`列の最大日を抽出したサブセットを作成
+# ToDo 下記の処理を実行したデータフレーム（df）を作成してください。
+## 1. ブロンズテーブルから主キー（`Id`）ごとに`_ingest_timestamp`列の最大日を抽出したサブセットを作成
 ## 2. 主キー＋`_ingest_timestamp`列の条件で、1のサブセットとブロンズテーブルを結合
 ## 3. ブロンズテーブルのデータ型をシルバーテーブルと同一のデータ型に変換
 brz_to_slv_sql = f'''
@@ -487,14 +482,8 @@ SELECT
 '''
 df = spark.sql(brz_to_slv_sql)
 
-# dropDuplicates関数にて、主キーの一意性を保証。連携日ごとの一意性が保証されないことがあるため。
-df = df.drop_duplicates(['Id'])
-
-# 一時ビューからシルバーテーブルに対して、MERGE文によりアップサート処理を実施。
-# 一時ビューの`_ingest_timestamp`列がシルバーテーブルの`_ingest_timestamp`列以降である場合のみ、UPDATE処理が実行。
-## 一時ビューを作成
-temp_view_name = f'_tmp_pricebook_entry__silver'
-df.createOrReplaceTempView(temp_view_name)
+# ToDo dropDuplicates関数にて、主キーの一意性を保証してください。
+df = df
 
 # COMMAND ----------
 
@@ -503,7 +492,7 @@ df.display()
 
 # COMMAND ----------
 
-# ToDo テーブルへ書き込みを実施してください。
+# ToDo 一時ビューからシルバーテーブルに対して、MERGE文によりアップサート処理を実施してください。
 
 # COMMAND ----------
 
