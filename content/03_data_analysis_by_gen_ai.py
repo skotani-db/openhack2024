@@ -281,4 +281,17 @@ spark.sql(states_sql).display()
 # COMMAND ----------
 
 # MAGIC %md
+# MAGIC ## Challenge1. Genie スペースの最適な利用方法を検討してください。
+# MAGIC
+# MAGIC こちらは Challenge のコンテンツであり、実施は任意です。
+# MAGIC
+# MAGIC 以下のGeneiスペースに関するドキュメントを参考に、Genieスペースの最適な活用方法を検討してください。新たな質問への回答精度の向上やベストプラクティスの整理など、アプローチは自由です。
+# MAGIC
+# MAGIC - [AI/BI Genie スペースとは - Azure Databricks | Microsoft Learn](https://learn.microsoft.com/ja-jp/azure/databricks/genie/)
+# MAGIC - [Use trusted assets in AI/BI Genie spaces - Azure Databricks | Microsoft Learn](https://learn.microsoft.com/ja-jp/azure/databricks/genie/trusted-assets)
+# MAGIC - [効果的な Genie スペースをキュレーションする - Azure Databricks | Microsoft Learn](https://learn.microsoft.com/ja-jp/azure/databricks/genie/best-practices)
+
+# COMMAND ----------
+
+# MAGIC %md
 # MAGIC ## End
