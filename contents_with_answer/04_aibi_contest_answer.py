@@ -98,6 +98,6 @@ print(review)
 
 # MAGIC %md
 # MAGIC ## ダッシュボード作成例
-# MAGIC https://databricks.zoom.us/rec/share/TyvEqtTJVXWpJtJubxN6CNo1Gfy3MI4rsIzMry9qE_CC6vdPKxZNTSZWu-JZQPhw.7rVT7zjtTAuzPiDq
+# MAGIC https://databricks.zoom.us/rec/share/A1JysmKQa7CSqkUp91-wyjNx8OoebMWXeKVWif7PzMoANsCRaF64HqzghhHUz-My.eMYNwpuoppwUbwJk
 # MAGIC
-# MAGIC Passcode: 5fc*.DYu
+# MAGIC Passcode: 1bmp3g%N
