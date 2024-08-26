@@ -32,8 +32,8 @@ print(f"schema_name: `{schema_name}`")
 # MAGIC - ケースのレビュー
 # MAGIC
 # MAGIC
-# MAGIC なお、ケースのレビューは以下のCTASを用いて作成します
-# MAGIC - ケースのレビューテーブル作成
+# MAGIC なお、ケースのレビューはセル7番に **-- ケースのレビューテーブル作成** 以下のクエリをコピーしてテーブル作成します。
+# MAGIC または左ペインからSQLエディタを展開して、クエリを実行します。
 
 # COMMAND ----------
 
@@ -92,6 +92,11 @@ print(review_ctas)
 print("-- ケースのレビュー")
 review = f"""SELECT * FROM {catalog_name}.{schema_name}.case_classified"""
 print(review)
+
+# COMMAND ----------
+
+# MAGIC %sql
+# MAGIC -- ケースのレビューテーブル作成
 
 # COMMAND ----------
 
