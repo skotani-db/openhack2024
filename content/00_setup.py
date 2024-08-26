@@ -16,7 +16,7 @@
 
 # MAGIC %md
 # MAGIC
-# MAGIC ※ TEAM 用のカタログを作成した場合には、チームメンバーに対して`ALL PRIVILEGES`権限を付与してください。
+# MAGIC コンテンツを実行するためのカタログが存在するかを確認してください。カタログが存在しない場合は、以下のセルを使用してカタログを作成してください。カタログを作成した場合、チームメンバーに対してALL PRIVILEGES権限を付与してください。
 # MAGIC
 # MAGIC - [Unity Catalog の特権の管理 - Azure Databricks | Microsoft Learn](https://learn.microsoft.com/ja-jp/azure/databricks/data-governance/unity-catalog/manage-privileges/#grant-permissions-on-objects-in-a-unity-catalog-metastore)
 # MAGIC
@@ -25,6 +25,10 @@
 # MAGIC > Metastore storage root URL does not exist. Please provide a storage location for the catalog (for example 'CREATE CATALOG myCatalog MANAGED LOCATION '<location-path>'). Alternatively set up a metastore root storage location to provide a storage location for all catalogs in the metastore.
 # MAGIC
 # MAGIC 参考リンク： [カタログを作成する - Azure Databricks | Microsoft Learn](https://learn.microsoft.com/ja-jp/azure/databricks/catalogs/create-catalog#catalogexplorer)
+# MAGIC
+# MAGIC カタログ作成時に下記エラーのようになった場合には、 Unity Catalog のメタストア管理者に問い合わせを実施してください。
+# MAGIC
+# MAGIC > PERMISSION DENIED: User does not have CREATE CATALOG on Metastore '{catalog_name}'.
 # MAGIC
 
 # COMMAND ----------
