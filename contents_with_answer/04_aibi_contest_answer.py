@@ -38,41 +38,41 @@ print(f"schema_name: `{schema_name}`")
 # COMMAND ----------
 
 print("-- ケース")
-case = """select * from {catalog_name}.{schema_name}.case
+case = f"""select * from {catalog_name}.{schema_name}.case
 """
 print(case)
 
 
 print("-- 問い合わせ")
-query = """select * from {catalog_name}.{schema_name}.case
+query = f"""select * from {catalog_name}.{schema_name}.case
 where type = "問い合わせ"
 """
 print(query)
 
 
 print("-- クレーム")
-claim = """SELECT * FROM {catalog_name}.{schema_name}.case
+claim = f"""SELECT * FROM {catalog_name}.{schema_name}.case
 WHERE Type = 'クレーム';
 """
 print(claim)
 
 
 print("-- 未クローズ")
-not_closed = """SELECT * FROM {catalog_name}.{schema_name}.case
+not_closed = f"""SELECT * FROM {catalog_name}.{schema_name}.case
 WHERE IsClosed = false;
 """
 print(not_closed)
 
 
 print("-- 未クローズかつ優先度高い")
-not_closed_high_priority = """SELECT * FROM {catalog_name}.{schema_name}.case
+not_closed_high_priority = f"""SELECT * FROM {catalog_name}.{schema_name}.case
 WHERE IsClosed = false and Priority = "高";
 """
 print(not_closed_high_priority)
 
 
 print("-- ケースのレビューテーブル作成")
-review_ctas = """CREATE TABLE {catalog_name}.{schema_name}.case_classified AS 
+review_ctas = f"""CREATE TABLE {catalog_name}.{schema_name}.case_classified AS 
 SELECT *, ai_classify(
     Description,
     ARRAY(
@@ -91,7 +91,7 @@ print(review_ctas)
 
 
 print("-- ケースのレビュー")
-review = """SELECT * FROM {catalog_name}.{schema_name}.case_classified"""
+review = f"""SELECT * FROM {catalog_name}.{schema_name}.case_classified"""
 print(review)
 
 # COMMAND ----------
@@ -101,3 +101,7 @@ print(review)
 # MAGIC https://databricks.zoom.us/rec/share/A1JysmKQa7CSqkUp91-wyjNx8OoebMWXeKVWif7PzMoANsCRaF64HqzghhHUz-My.eMYNwpuoppwUbwJk
 # MAGIC
 # MAGIC Passcode: 1bmp3g%N
+
+# COMMAND ----------
+
+
