@@ -83,7 +83,7 @@ SELECT *, ai_classify(
       "その他"
     )
   ) AS predict
-FROMt eam_master.`03_data_analysis_by_gen_ai_for_ktn`
+FROM team_master.`03_data_analysis_by_gen_ai_for_ktn`
 .`case`
 LIMIT 100;
 """
