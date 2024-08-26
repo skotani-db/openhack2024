@@ -83,8 +83,7 @@ SELECT *, ai_classify(
       "その他"
     )
   ) AS predict
-FROM team_master.`03_data_analysis_by_gen_ai_for_ktn`
-.`case`
+FROM {catalog_name}.{schema_name}.`case`
 LIMIT 100;
 """
 print(review_ctas)
