@@ -4,6 +4,11 @@
 
 # COMMAND ----------
 
+# MAGIC %md
+# MAGIC ※本ノートブックは、各チーム（各カタログ）につき1名のみが実施してください。
+
+# COMMAND ----------
+
 # MAGIC %run ./00_config
 
 # COMMAND ----------
