@@ -138,7 +138,7 @@ print(data)
 
 # COMMAND ----------
 
-# Bronzeテーブルを作成
+# `product2__bronze`テーブルを作成
 create_tbl_ddl = f"""
 CREATE OR REPLACE TABLE {tgt_table_name__1_1_1}
 (
@@ -194,7 +194,7 @@ df.display()
 
 # COMMAND ----------
 
-# ターゲットのテーブルへ`append`によりデータの書き込みを実施
+# `product2__bronze`テーブルへ`append`によりデータの書き込みを実施
 (
     df.write.format("delta")
     .mode("append")
@@ -223,7 +223,7 @@ tgt_table_name__1_2_1 = f"{catalog_name}.{schema_name}.pricebook_entry__bronze"
 
 # COMMAND ----------
 
-# Bronzeテーブルを作成
+# `pricebook_entry__bronze`テーブルを作成
 create_tbl_ddl = f"""
 CREATE OR REPLACE TABLE {tgt_table_name__1_2_1}
 (
@@ -260,7 +260,8 @@ df.display()
 
 # COMMAND ----------
 
-# ToDo テーブルへ書き込みを実施してください。
+# ToDo `pricebook_entry__bronze`テーブルへ書き込みを実施してください。
+
 
 # COMMAND ----------
 
@@ -284,7 +285,7 @@ tgt_table_name__2_1_1 = f"{catalog_name}.{schema_name}.product2__silver"
 
 # COMMAND ----------
 
-# Silver テーブルを作成
+# `product2__silver`テーブルを作成
 spark.sql(
     f"""
     CREATE OR REPLACE TABLE {tgt_table_name__2_1_1}
@@ -319,9 +320,9 @@ spark.sql(
 # COMMAND ----------
 
 # 下記の処理を実行したデータフレーム（df）を作成
-## 1. ブロンズテーブルから主キー（`Id`）ごとに`_ingest_timestamp`列の最大日を抽出したサブセットを作成
-## 2. 主キー＋`_ingest_timestamp`列の条件で、1のサブセットとブロンズテーブルを結合
-## 3. ブロンズテーブルのデータ型をシルバーテーブルと同一のデータ型に変換
+## 1. `product2__bronze`テーブルから主キー（`Id`）ごとに`_ingest_timestamp`列の最大日を抽出したサブセットを作成
+## 2. 主キー＋`_ingest_timestamp`列の条件で、1のサブセットと`product2__bronzeテーブルを結合
+## 3. `product2__bronze`テーブルのデータ型をシルバーテーブルと同一のデータ型に変換
 brz_to_slv_sql = f'''
 with slv_records (
 SELECT
@@ -376,7 +377,7 @@ df.display()
 
 # COMMAND ----------
 
-# 一時ビューからシルバーテーブルに対して、MERGE文によりアップサート処理を実施。
+# 一時ビューから`product2__silver`に対して、MERGE文によりアップサート処理を実施。
 ## 一時ビューを作成
 temp_view_name = f'_tmp_product2__silver'
 df.createOrReplaceTempView(temp_view_name)
@@ -445,9 +446,9 @@ spark.sql(
 # COMMAND ----------
 
 # ToDo 下記の処理を実行したデータフレーム（df）を作成してください。
-## 1. ブロンズテーブルから主キー（`Id`）ごとに`_ingest_timestamp`列の最大日を抽出したサブセットを作成
-## 2. 主キー＋`_ingest_timestamp`列の条件で、1のサブセットとブロンズテーブルを結合
-## 3. ブロンズテーブルのデータ型をシルバーテーブルと同一のデータ型に変換
+## 1. `pricebook_entry__bronze`テーブルから主キー（`Id`）ごとに`_ingest_timestamp`列の最大日を抽出したサブセットを作成
+## 2. 主キー＋`_ingest_timestamp`列の条件で、1のサブセットと`pricebook_entry__bronze`テーブルを結合
+## 3. `pricebook_entry__bronze`テーブルのデータ型をシルバーテーブルと同一のデータ型に変換
 brz_to_slv_sql = f'''
 with slv_records (
 SELECT
@@ -497,7 +498,7 @@ df.display()
 
 # COMMAND ----------
 
-# ToDo 一時ビューからシルバーテーブルに対して、MERGE文によりアップサート処理を実施してください。
+# ToDo 一時ビューから`pricebook_entry__silver`テーブルに対して、MERGE文によりアップサート処理を実施してください。
 
 # COMMAND ----------
 
@@ -549,7 +550,7 @@ df.display()
 
 # COMMAND ----------
 
-# Gold テーブルへ書き込み
+# `product_count_by_family`テーブルへ書き込み
 df.write.mode("overwrite").saveAsTable(tgt_table_name__3_1_1)
 
 # COMMAND ----------
@@ -606,7 +607,7 @@ df.display()
 
 # COMMAND ----------
 
-# ToDo テーブルへ書き込みを実施してください。
+# ToDo `d_product`テーブルへ書き込みを実施してください。
 
 # COMMAND ----------
 
