@@ -114,6 +114,11 @@ display(dbutils.fs.ls(volume_dir))
 
 # MAGIC %md
 # MAGIC ## Q1. Bronzeテーブルのパイプラインを作成してください。
+# MAGIC
+# MAGIC 取り込み対象のデータについては、下記のオブジェクトと同等のものとなっております。
+# MAGIC
+# MAGIC - [Product2 | Salesforce プラットフォームのオブジェクトリファレンス | Salesforce Developers](https://developer.salesforce.com/docs/atlas.ja-jp.object_reference.meta/object_reference/sforce_api_objects_product2.htm)
+# MAGIC - [PricebookEntry | Salesforce プラットフォームのオブジェクトリファレンス | Salesforce Developers](https://developer.salesforce.com/docs/atlas.ja-jp.object_reference.meta/object_reference/sforce_api_objects_pricebookentry.htm)
 
 # COMMAND ----------
 
