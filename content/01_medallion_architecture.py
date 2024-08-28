@@ -620,6 +620,12 @@ display(spark.table(tgt_table_name__3_2_1))
 # MAGIC ## Challenge1. Databricks Auto Loader によりデータ取り込みを実施してください。
 # MAGIC
 # MAGIC こちらは Challenge のコンテンツであり、実施は任意です。
+# MAGIC
+# MAGIC Databricks Auto Loader（自動ローダー）について詳しく知りたい方は、以下のドキュメントをご参照ください。
+# MAGIC
+# MAGIC > 自動ローダーでは、追加の設定を行わなくても、クラウド ストレージに到着した新しいデータ ファイルが段階的かつ効率的に処理されます。
+# MAGIC
+# MAGIC 引用元：[自動ローダー - Azure Databricks | Microsoft Learn](https://learn.microsoft.com/ja-jp/azure/databricks/ingestion/cloud-object-storage/auto-loader/)
 
 # COMMAND ----------
 
