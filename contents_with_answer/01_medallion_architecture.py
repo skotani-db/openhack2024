@@ -683,6 +683,12 @@ display(spark.table(tgt_table_name__3_2_1))
 # MAGIC > 自動ローダーでは、追加の設定を行わなくても、クラウド ストレージに到着した新しいデータ ファイルが段階的かつ効率的に処理されます。
 # MAGIC
 # MAGIC 引用元：[自動ローダー - Azure Databricks | Microsoft Learn](https://learn.microsoft.com/ja-jp/azure/databricks/ingestion/cloud-object-storage/auto-loader/)
+# MAGIC
+# MAGIC 取り込み対象のデータについては、下記のオブジェクトと同等のものとなっております。
+# MAGIC
+# MAGIC - [Campaign | Salesforce プラットフォームのオブジェクトリファレンス | Salesforce Developers](https://developer.salesforce.com/docs/atlas.ja-jp.object_reference.meta/object_reference/sforce_api_objects_campaign.htm)
+# MAGIC - [Account | Salesforce プラットフォームのオブジェクトリファレンス | Salesforce Developers](https://developer.salesforce.com/docs/atlas.ja-jp.object_reference.meta/object_reference/sforce_api_objects_account.htm)
+# MAGIC
 
 # COMMAND ----------
 
