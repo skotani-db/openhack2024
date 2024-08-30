@@ -1,6 +1,6 @@
 # Databricks notebook source
 # MAGIC %md
-# MAGIC ## 01. メダリオンアーキテクチャに基づいたデータエンジニアリング概要
+# MAGIC ## 01. メダリオンアーキテクチャに基づいたデータエンジニアリング概要 (標準時間：60分)
 # MAGIC
 # MAGIC
 # MAGIC
@@ -18,7 +18,7 @@
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ### メダリオンアーキテクチャとは
+# MAGIC ### メダリオンアーキテクチャとは(標準時間：5分)
 # MAGIC
 # MAGIC データを、Bronze、Silver、Goldの３層の論理レイヤーで管理する手法です。Databricks では、すべてのレイヤーを Delta Lake 形式で保持することが推奨されています。
 # MAGIC
@@ -113,7 +113,7 @@ display(dbutils.fs.ls(volume_dir))
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ## Q1. Bronzeテーブルのパイプラインを作成してください。
+# MAGIC ## Q1. Bronzeテーブルのパイプラインを作成してください。(標準時間：20分)
 # MAGIC
 # MAGIC 取り込み対象のデータについては、下記のオブジェクトと同等のものとなっております。
 # MAGIC
@@ -271,7 +271,7 @@ display(spark.table(f"{tgt_table_name__1_2_1}"))
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ## Q2. Silver テーブルのパイプラインを作成してください
+# MAGIC ## Q2. Silver テーブルのパイプラインを作成してください(標準時間：20分)
 
 # COMMAND ----------
 
@@ -508,7 +508,7 @@ display(spark.table(tgt_table_name__2_1_1))
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ## Q3. Gold Tableのパイプラインを作成してください
+# MAGIC ## Q3. Gold Tableのパイプラインを作成してください(標準時間：15分)
 
 # COMMAND ----------
 

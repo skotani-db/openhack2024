@@ -1,6 +1,6 @@
 # Databricks notebook source
 # MAGIC %md
-# MAGIC ## Delta Live Tables によるデータエンジニアリング
+# MAGIC ## Delta Live Tables によるデータエンジニアリング (標準時間：60分)
 
 # COMMAND ----------
 
@@ -55,7 +55,8 @@ display(dbutils.fs.ls(volume_dir))
 
 # MAGIC %md
 # MAGIC
-# MAGIC ### Q1. Delta Live Tablesのセッティングを行なってください
+# MAGIC ### Q1. Delta Live Tablesのセッティングを行なってください(標準時間：15分)
+# MAGIC
 
 # COMMAND ----------
 
@@ -111,7 +112,7 @@ print(f"mypipeline.schema_name: {schema_name}")
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ## Q2. パイプラインを実行する（Run a Pipeline）
+# MAGIC ## Q2. パイプラインを実行する（Run a Pipeline）(標準時間：10分)
 # MAGIC
 # MAGIC パイプラインを構築したら、そのパイプラインを実行します。
 # MAGIC
@@ -123,7 +124,7 @@ print(f"mypipeline.schema_name: {schema_name}")
 
 # MAGIC %md
 # MAGIC
-# MAGIC ## Q3. DAGを調べる（Exploring the DAG）
+# MAGIC ## Q3. DAGを調べる（Exploring the DAG）(標準時間：5分)
 # MAGIC
 # MAGIC パイプラインが完了すると、実行フローがグラフ化されます。
 # MAGIC
@@ -133,7 +134,7 @@ print(f"mypipeline.schema_name: {schema_name}")
 
 # MAGIC %md
 # MAGIC
-# MAGIC ## Q4. パイプラインの修正
+# MAGIC ## Q4. パイプラインの修正 (標準時間：30分)
 # MAGIC
 # MAGIC `02_delta_live_table_conf`ノートブックに記載されている ToDo を実施してパイプラインを修正してください。修正後、下記の手順で DAG が変更されます。
 # MAGIC

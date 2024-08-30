@@ -1,11 +1,11 @@
 # Databricks notebook source
 # MAGIC %md
-# MAGIC # AI/BI Genie Space にて生成 AI によるデータ分析の実績
+# MAGIC # AI/BI Genie Space にて生成 AI によるデータ分析の実績 (標準時間：60分)
 
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ## 事前準備
+# MAGIC ## 事前準備 (標準時間：10分)
 
 # COMMAND ----------
 
@@ -48,12 +48,7 @@ for init_n in init_notebooks:
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC
-
-# COMMAND ----------
-
-# MAGIC %md
-# MAGIC ## Q1. Genie スペース を作成
+# MAGIC ## Q1. Genie スペース を作成 (標準時間：20分)
 
 # COMMAND ----------
 
@@ -112,7 +107,7 @@ table_list_df.display()
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ## Q2. General Instructions 修正による Genie スペース の改善
+# MAGIC ## Q2. General Instructions 修正による Genie スペース の改善 (標準時間：10分)
 
 # COMMAND ----------
 
@@ -155,7 +150,7 @@ print("""
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ## Q3. Example SQL Queries 追加による Genie スペース の改善
+# MAGIC ## Q3. Example SQL Queries 追加による Genie スペース の改善 (標準時間：10分)
 
 # COMMAND ----------
 
@@ -204,7 +199,7 @@ df.display()
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ## Q4. Trusted Assets 追加による Genie スペース の改善
+# MAGIC ## Q4. Trusted Assets 追加による Genie スペース の改善 (標準時間：10分)
 # MAGIC
 
 # COMMAND ----------
