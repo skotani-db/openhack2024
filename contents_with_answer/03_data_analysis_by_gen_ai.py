@@ -286,11 +286,24 @@ spark.sql(states_sql).display()
 # MAGIC
 # MAGIC こちらは Challenge のコンテンツであり、実施は任意です。
 # MAGIC
-# MAGIC 以下のGeneiスペースに関するドキュメントを参考に、Genieスペースの最適な活用方法を検討してください。新たな質問への回答精度の向上やベストプラクティスの整理など、アプローチは自由です。
+# MAGIC 以下のGeneiスペースに関するドキュメントを参考に、Genieスペースを利用する際の基本方針（例：利用用途に応じて、小規模な利用から初めて反復的な改善を実施すること。）を5つ程度検討してください。新たな質問への回答精度の向上やベストプラクティスの整理など、アプローチは自由です。
 # MAGIC
 # MAGIC - [AI/BI Genie スペースとは - Azure Databricks | Microsoft Learn](https://learn.microsoft.com/ja-jp/azure/databricks/genie/)
 # MAGIC - [Use trusted assets in AI/BI Genie spaces - Azure Databricks | Microsoft Learn](https://learn.microsoft.com/ja-jp/azure/databricks/genie/trusted-assets)
 # MAGIC - [効果的な Genie スペースをキュレーションする - Azure Databricks | Microsoft Learn](https://learn.microsoft.com/ja-jp/azure/databricks/genie/best-practices)
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC
+# MAGIC # Todo
+# MAGIC
+# MAGIC 1. 利用用途に応じて、小規模な利用から初めて反復的な改善を実施すること。
+# MAGIC 1. テーブルやカラムのコメント、 Description、および、クエリの提供により質問を処理する上で必要となる情報を記述すること
+# MAGIC 1. テーブル数とカラム数を必要最小限とすること
+# MAGIC 1. 誤った結合を避けるため外部キーの定義やクエリの提供を実施すること
+# MAGIC 1. ビジネス用語をドメインの専門家と協力しながら追記すること
+# MAGIC
 
 # COMMAND ----------
 
