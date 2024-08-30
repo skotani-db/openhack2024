@@ -164,7 +164,7 @@ print("""
 # MAGIC 1. 左型にある`Instructions`タブを選択
 # MAGIC 1. `Example SQL Queries`における`+ Add example query`を選択
 # MAGIC 1. `What question does this query answer?`とクエリを各領域に下記セルの出力結果を張り付けて、`Save`を選択
-# MAGIC 1. `+ New chat`を選択して`Show me the sales amount by order date.`という質問の回答が来ることを確認
+# MAGIC 1. `+ New chat`を選択して`Show me the sales amount by order date.`という質問の回答が来ることを確認。もし想定通りに回答がこない場合には、`Show me the sales amount by order date based on Example SQL Queries.`ちおう質問を実施。
 
 # COMMAND ----------
 
