@@ -67,22 +67,22 @@ display(dbutils.fs.ls(volume_dir))
 # MAGIC 1. サイドバーの**Workflows**ボタンをクリックします。
 # MAGIC 1. **Delta Live Tables**タブを選択します。
 # MAGIC 1. **Create Pipeline**をクリックします。
-# MAGIC 1. **Pipeline name**を入力します。これらの名前は一意である必要があるため、下記のセルに記載されている`pipeline_name`を使用することをおすすめします。
-# MAGIC 1. **Serveless**をチェックします。
-# MAGIC 1. **Pipeline mode**では、**Trigger**を選択します。本手順ではファイルの取り込みを1回のみ行うため、`Trigger`を選択しています。
+# MAGIC 1. **General**における**Pipeline name**を入力します。これらの名前は一意である必要があるため、下記のセルに記載されている`pipeline_name`を使用することをおすすめします。
+# MAGIC 1. **General**にて**Serveless**をチェックします。
+# MAGIC 1. **General**における**Pipeline mode**では、**Trigger**を選択します。本手順ではファイルの取り込みを1回のみ行うため、`Trigger`を選択しています。
 # MAGIC    * このフィールドでは、パイプラインの実行方法を指定します。
 # MAGIC    * **Trigger**パイプラインは一度だけ実行され、次の手動またはスケジュールされた更新まではシャットダウンします。
 # MAGIC    * **Continuous**パイプラインは継続的に実行され、新しいデータが到着するとそのデータを取り込みます。 レイテンシとコスト要件に基づいてモードを選択してください。
-# MAGIC 1. **Source code**では、ナビゲーターを使って**02_delta_live_table_conf**という付録のノートブックを探して選択します。
+# MAGIC 1. **Source code**における**Paths**では、ナビゲーターを使って**02_delta_live_table_conf**という付録のノートブックを探して選択します。
 # MAGIC    * このドキュメントは標準のDatabricksノートブックですが、SQL構文はDLTテーブル宣言に特化しています。
 # MAGIC    * 次のエクササイズでは、構文について見ていきます。
-# MAGIC 1. **Destination**フィールドに、**Storage options**にて**Unity Catalog**をチェックし、下記のセルで`Catalog`と`Target schema`の隣に表示されているカタログ名とスキーマ名を指定します。
+# MAGIC 1. **Destination**における**Storage options**にて**Unity Catalog**をチェックし、下記のセルで`Catalog`と`Target schema`の隣に表示されているカタログ名とスキーマ名を指定します。
 # MAGIC    * このフィールドは任意です。指定しなかった場合、テーブルはメタストアに登録されませんが、引き続きDBFSでは使用できます。 このオプションに関して詳しく知りたい場合は、こちらの<a href="https://learn.microsoft.com/ja-jp/azure/databricks/delta-live-tables/publish-data" target="_blank">ドキュメント</a>を参考にしてください。
 # MAGIC 1. **Notifications**にて**Add notification**を選択して下記の 3 つを設定します。
 # MAGIC    * **Email(s) (comma-separated)**にメールアドレスを入力
 # MAGIC    * **On update**をすべてチェック
 # MAGIC    * **On flow**をすべてチェック
-# MAGIC 1. **Configuratione**にて**Add configuration**を選択して下記の 3 つを設定します。
+# MAGIC 1. **Advanced**における**Configuratione**にて**Add configuration**を選択して下記の 2 つを設定します。
 # MAGIC    * **Key**に**mypipeline.catalog_name**を、Value にその key に相当する下記セルの値を設定
 # MAGIC    * **Key**に**mypipeline.schema_name**を、Value にその key に相当する下記セルの値を設定
 # MAGIC 1. **Create**をクリックします。
