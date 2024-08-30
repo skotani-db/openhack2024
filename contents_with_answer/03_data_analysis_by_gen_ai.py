@@ -213,7 +213,7 @@ df.display()
 # MAGIC 1. 左型にある`Instructions`タブを選択
 # MAGIC 1. `SQL Functions`における`Add SQL Function`を選択
 # MAGIC 1. `Catalog`、`Schema`、および、`Function`に下記セルの出力結果を張り付けて、`Save`を選択
-# MAGIC 1. `+ New chat`を選択して`What is the pipeline for 東京都 and 大阪府?`という質問の回答が来ることを確認。データが存在しない場合には、データが存在する県（state）に変更。
+# MAGIC 1. `+ New chat`を選択して`What is the pipeline for 東京都 and 大阪府?`という質問の回答が来ることを確認。データが存在しない場合には、データが存在する県（state）に変更。この質問における`pipeline`は、データエンジニアリング（Delta live Tables）のパイプラインではなく、営業活動に関連するパイプラインを指します。
 # MAGIC
 # MAGIC 参考リンク
 # MAGIC
