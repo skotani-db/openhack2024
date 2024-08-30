@@ -218,6 +218,7 @@ df.display()
 # MAGIC 参考リンク
 # MAGIC
 # MAGIC - [Use trusted assets in AI/BI Genie spaces](https://learn.microsoft.com/ja-jp/azure/databricks/genie/trusted-assets)
+# MAGIC - [パイプライン管理とは？効果的に運用するための4ステップを解説](https://www.salesforce.com/jp/blog/jp-pipeline-management/)
 
 # COMMAND ----------
 
