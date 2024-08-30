@@ -5,7 +5,7 @@
 # COMMAND ----------
 
 # MAGIC %md 
-# MAGIC ### 本ノートブックの目的：Delta Live Tablesによってパイプライン構築がモダナイズされることを実感する
+# MAGIC ## 本ノートブックの目的：Delta Live Tablesによってパイプライン構築がモダナイズされることを実感する
 # MAGIC
 # MAGIC Q1. Delta Live Tablesのセッティングを行なってください<br>
 # MAGIC Q2. パイプラインを実行する（Run a Pipeline）<br>

@@ -4,6 +4,16 @@
 
 # COMMAND ----------
 
+# MAGIC %md 
+# MAGIC ## 本ノートブックの目的：AI/BI Genie Space を用いた自然言語によるデータ分析の方法論を理解する
+# MAGIC
+# MAGIC Q1. Genie スペース を作成<br>
+# MAGIC Q2. General Instructions 修正による Genie スペース の改善<br>
+# MAGIC Q3. Example SQL Queries 追加による Genie スペース の改善 <br>
+# MAGIC Q4. Trusted Assets 追加による Genie スペース の改善
+
+# COMMAND ----------
+
 # MAGIC %md
 # MAGIC ## 事前準備(標準時間：10分)
 
