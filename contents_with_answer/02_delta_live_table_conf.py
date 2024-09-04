@@ -65,6 +65,26 @@ def product2_bronze():
 # COMMAND ----------
 
 # ToDo
+@dlt.table(
+    name="pricebook_entry__bronze",
+    comment="This table contains the bronze data for pricebook_entry__bronze",
+)
+def pricebook_entry__bronze():
+    df = (
+        spark.readStream.format("cloudFiles")
+        .option("cloudFiles.format", "csv")
+        .option("cloudFiles.inferColumnTypes", "false")
+        .option("overwriteSchema", "true")
+        .load(f"/Volumes/{catalog_name}/{schema_name}/{volume_name}/PricebookEntry*.csv")
+    )
+
+    df = (
+        df.select("*", "_metadata")
+        .withColumn("_datasource", df["_metadata.file_path"])
+        .withColumn("_ingest_timestamp", df["_metadata.file_modification_time"])
+        .drop("_metadata")
+    )
+    return df
 
 # COMMAND ----------
 
