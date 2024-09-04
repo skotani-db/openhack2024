@@ -93,11 +93,11 @@ spark.sql(
     """
 )
 
-checkpint_volume_name = "checkpint_volume_01"
-print(f"checkpint_volume_name: `{checkpint_volume_name}`")
+checkpoint_volume_name = "checkpoint_volume_01"
+print(f"checkpoint_volume_name: `{checkpoint_volume_name}`")
 spark.sql(
     f"""
-    CREATE VOLUME IF NOT EXISTS {catalog_name}.{schema_name}.{checkpint_volume_name}
+    CREATE VOLUME IF NOT EXISTS {catalog_name}.{schema_name}.{checkpoint_volume_name}
     """
 )
 
@@ -106,7 +106,7 @@ spark.sql(
 # 本ノートブックで利用するソースファイルを Volume に移動
 file_dir = f"/Volumes/{catalog_name}/{src_schema_name}/{src_volume_name}/{src_folder_name}"
 volume_dir = f"/Volumes/{catalog_name}/{schema_name}/{volume_name}"
-checkpint_volume_dir = f"/Volumes/{catalog_name}/{schema_name}/{checkpint_volume_name}"
+checkpoint_volume_dir = f"/Volumes/{catalog_name}/{schema_name}/{checkpoint_volume_name}"
 
 dbutils.fs.cp(file_dir, volume_dir, recurse=True)
 display(dbutils.fs.ls(volume_dir))
@@ -699,7 +699,7 @@ display(spark.table(tgt_table_name__3_2_1))
 # COMMAND ----------
 
 src_file_path__c1_1_1 = f"{volume_dir}/Campaign.csv"
-checkpoint_dir__c1_1_1 = f"{checkpint_volume_dir}/campaign"
+checkpoint_dir__c1_1_1 = f"{checkpoint_volume_dir}/campaign"
 tgt_table_name__c1_1_1 = f"{catalog_name}.{schema_name}.campaign__bronze"
 
 schema__c1_1_1 = """
@@ -813,7 +813,7 @@ display(spark.table(f"{tgt_table_name__c1_1_1}"))
 # COMMAND ----------
 
 src_file_path__c1_2_1 = f"{volume_dir}/Account.csv"
-checkpoint_dir__c1_2_1 = f"{checkpint_volume_dir}/account"
+checkpoint_dir__c1_2_1 = f"{checkpoint_volume_dir}/account"
 tgt_table_name__c1_2_1 = f"{catalog_name}.{schema_name}.account__bronze"
 
 schema__c1_2_1 = """
