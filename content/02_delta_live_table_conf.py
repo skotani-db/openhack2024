@@ -144,7 +144,7 @@ def product2__silver():
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ## Q1. Gold Tableのパイプラインを作成してください
+# MAGIC ## Q3. Gold Tableのパイプラインを作成してください
 
 # COMMAND ----------
 
