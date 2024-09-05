@@ -65,7 +65,7 @@ for init_n in init_notebooks:
 # MAGIC %md
 # MAGIC
 # MAGIC 1. 現在のノートブックの左型タブにある`Workspace (Ctrl + Alt + E)`を選択し、現在のディレクトリ（`contents`)を表示
-# MAGIC 1. ハンバーガーメニュー（`︙`）を選択し、`作成` -> `Genieスペース`を選択 *1
+# MAGIC 1. ケバブメニュー（`︙`）を選択し、`作成` -> `Genieスペース`を選択 *1
 # MAGIC 1. Genieスペースの作成画面にて下記セルの出力結果を設定して`Save`を選択
 # MAGIC 1. チャットウィンドウにて、`データセットに含まれるテーブルについて説明して`という質問の回答が来ることを確認
 # MAGIC
@@ -169,7 +169,7 @@ print("""
 # MAGIC 1. 左型にある`Instructions`タブを選択
 # MAGIC 1. `Example SQL Queries`における`+ Add example query`を選択
 # MAGIC 1. `What question does this query answer?`とクエリを各領域に下記セルの出力結果を張り付けて、`Save`を選択
-# MAGIC 1. `+ New chat`を選択して`Show me the sales amount by order date.`という質問の回答が来ることを確認。もし想定通りに回答がこない場合には、`Show me the sales amount by order date based on Example SQL Queries.`ちおう質問を実施。
+# MAGIC 1. `+ New chat`を選択して`Show me the sales amount by order date.`という質問の回答が来ることを確認。もし想定通りに回答がこない場合には、`Show me the sales amount by order date based on Example SQL Queries.`という質問を実施。
 
 # COMMAND ----------
 
