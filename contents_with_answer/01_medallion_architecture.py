@@ -254,7 +254,7 @@ spark.sql(create_tbl_ddl)
 
 # COMMAND ----------
 
-# ToDo 書き込み処理を記述してください
+# ToDo 読み込み処理を記述してください
 # ソースからデータを読み込む
 df = (
     spark.read.format("csv")
